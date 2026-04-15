@@ -1,0 +1,76 @@
+{
+    "TYT Türkçe": [
+        "Sözcükte Anlam", "Cümlede Anlam", "Paragraf", "Ses Bilgisi",
+        "Yazım Kuralları", "Noktalama İşaretleri", "Sözcükte Yapı",
+        "Sözcük Türleri", "Fiiller", "Cümlenin Ögeleri", "Cümle Türleri", "Anlatım Bozukluğu"
+    ],
+    "TYT Matematik": [
+        "Temel Kavramlar", "Sayı Basamakları", "Bölme ve Bölünebilme", "EBOB – EKOK",
+        "Rasyonel Sayılar", "Basit Eşitsizlikler", "Mutlak Değer", "Üslü Sayılar",
+        "Köklü Sayılar", "Çarpanlara Ayırma", "Oran Orantı", "Denklem Çözme",
+        "Problemler", "Kümeler", "Mantık", "Fonksiyonlar", "Polinomlar",
+        "2.Dereceden Denklemler", "Permütasyon ve Kombinasyon", "Olasılık", "Veri – İstatistik"
+    ],
+    "TYT Geometri": [
+        "Doğruda Açı", "Üçgende Açı", "Ek Çizimler", "Özel Üçgenler", "Açıortay",
+        "Kenarortay", "Üçgende Eşlik – Benzerlik", "Açı – Kenar Bağıntıları",
+        "Üçgende Alan", "Üçgende Merkezler", "Çokgenler", "Dörtgenler", "Deltoid",
+        "Paralelkenar", "Eşkenar Dörtgen", "Dikdörtgen", "Kare", "Yamuk",
+        "Çember ve Daire", "Analitik Geometri", "Katı Cisimler"
+    ],
+    "TYT Fizik": [
+        "Fizik Bilimine Giriş", "Madde ve Özellikleri", "Hareket ve Kuvvet",
+        "İş, Güç ve Enerji", "Isı, Sıcaklık ve Genleşme", "Basınç",
+        "Kaldırma Kuvveti", "Elektrostatik", "Elektrik ve Manyetizma", "Dalgalar", "Optik"
+    ],
+    "TYT Kimya": [
+        "Kimya Bilimi", "Atom ve Periyodik Sistem", "Kimyasal Türler Arası Etkileşimler",
+        "Maddenin Halleri", "Doğa ve Kimya", "Kimyanın Temel Kanunları",
+        "Kimyasal Hesaplamalar", "Karışımlar", "Asit, Baz ve Tuz", "Kimya Her Yerde"
+    ],
+    "TYT Biyoloji": [
+        "Canlıların Ortak Özellikleri", "Canlıların Temel Bileşenleri", "Hücre ve Organelleri",
+        "Hücre Zarından Madde Geçişi", "Canlıların Sınıflandırılması", "Mitoz ve Eşeysiz Üreme",
+        "Mayoz ve Eşeyli Üreme", "Kalıtım", "Ekosistem Ekolojisi", "Güncel Çevre Sorunları"
+    ],
+    "TYT Tarih": [
+        "Tarih ve Zaman", "İnsanlığın İlk Dönemleri", "İlk ve Orta Çağlarda Türk Dünyası",
+        "İslam Medeniyetinin Doğuşu ve İlk İslam Devletleri", "Türklerin İslamiyet'i Kabulü",
+        "Orta Çağ'da Dünya", "Osmanlı Siyaseti ve Medeniyeti", "Dünya Gücü Osmanlı",
+        "Değişen Dünya Dengeleri", "Milli Mücadele", "Atatürkçülük ve Türk İnkılabı"
+    ],
+    "TYT Coğrafya": [
+        "Doğa ve İnsan", "Dünya'nın Şekli ve Hareketleri", "Coğrafi Konum",
+        "Harita Bilgisi", "İklim Bilgisi", "İç ve Dış Kuvvetler", "Nüfus",
+        "Göç", "Ekonomik Faaliyetler", "Bölgeler", "Doğal Afetler"
+    ],
+    "AYT Matematik": [
+        "Temel Kavramlar", "Problemler", "Kümeler", "Mantık", "Fonksiyonlar",
+        "Polinomlar", "2.Dereceden Denklemler", "Binom", "Permütasyon ve Kombinasyon",
+        "Olasılık", "Veri – İstatistik", "Karmaşık Sayılar", "2.Dereceden Eşitsizlikler",
+        "Parabol", "Trigonometri", "Logaritma", "Diziler", "Limit", "Türev", "İntegral"
+    ],
+    "AYT Fizik": [
+        "Vektörler", "Kuvvet, Tork ve Denge", "Kütle Merkezi", "Basit Makineler",
+        "Hareket ve Newton Yasaları", "İş, Güç ve Enerji", "Atışlar", "İtme ve Momentum",
+        "Elektrik Alan ve Potansiyel", "Manyetizma", "Çembersel Hareket",
+        "Açısal Momentum", "Kütle Çekim", "Basit Harmonik Hareket", "Dalga Mekaniği",
+        "Atom Fiziği ve Modern Fizik"
+    ],
+    "AYT Kimya": [
+        "Modern Atom Teorisi", "Gazlar", "Sıvı Çözeltiler", "Kimyasal Tepkimelerde Enerji",
+        "Kimyasal Tepkimelerde Hız", "Kimyasal Tepkimelerde Denge", "Asit-Baz Dengesi",
+        "Çözünürlük Dengesi", "Kimya ve Elektrik", "Karbon Kimyasına Giriş", "Organik Kimya"
+    ],
+    "AYT Biyoloji": [
+        "Sinir Sistemi", "Endokrin Sistem", "Duyu Organları", "Destek ve Hareket Sistemi",
+        "Sindirim Sistemi", "Dolaşım ve Bağışıklık", "Solunum Sistemi", "Üriner Sistem",
+        "Üreme Sistemi", "Komünite ve Popülasyon Ekolojisi", "Genden Proteine",
+        "Canlılarda Enerji Dönüşümleri", "Bitki Biyolojisi"
+    ],
+    "AYT Edebiyat": [
+        "Anlam Bilgisi", "Şiir Bilgisi", "Söz Sanatları", "İslamiyet Öncesi ve Geçiş Dönemi",
+        "Halk Edebiyatı", "Divan Edebiyatı", "Tanzimat", "Servet-i Fünun",
+        "Milli Edebiyat", "Cumhuriyet Dönemi", "Edebi Akımlar"
+    ]
+}
