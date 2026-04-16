@@ -72,5 +72,68 @@
         "Anlam Bilgisi", "Şiir Bilgisi", "Söz Sanatları", "İslamiyet Öncesi ve Geçiş Dönemi",
         "Halk Edebiyatı", "Divan Edebiyatı", "Tanzimat", "Servet-i Fünun",
         "Milli Edebiyat", "Cumhuriyet Dönemi", "Edebi Akımlar", "Branş Deneme"
+    ],
+    "LGS Türkçe": [
+        "Fiilimsiler",
+        "Cümlenin Ögeleri",
+        "Fiil Çatısı",
+        "Sözcükte Anlam",
+        "Cümlede Anlam",
+        "Cümle Çeşitleri",
+        "Yazım Kuralları",
+        "Paragraf",
+        "Noktalama İşaretleri",
+        "Anlatım Bozuklukları"
+    ],
+    "LGS Matematik": [
+        "Çarpanlar ve Katlar",
+        "Üslü İfadeler",
+        "Kareköklü İfadeler",
+        "Veri Analizi",
+        "Basit Olayların Olasılığı",
+        "Cebirsel İfadeler ve Özdeşlikler",
+        "Doğrusal Denklemler",
+        "Eşitsizlikler",
+        "Üçgenler",
+        "Eşlik ve Benzerlik",
+        "Dönüşüm Geometrisi",
+        "Geometrik Cisimler"
+    ],
+    "LGS Fen Bilimleri": [
+        "Mevsimler ve İklim",
+        "DNA ve Genetik Kod",
+        "Basınç",
+        "Madde ve Endüstri",
+        "Basit Makineler",
+        "Enerji Dönüşümleri ve Çevre Bilimi",
+        "Elektrik Yükleri ve Elektrik Enerjisi"
+    ],
+    "LGS İnkılap Tarihi": [
+        "Bir Kahraman Doğuyor",
+        "Milli Uyanış: Bağımsızlık Yolunda Atılan Adımlar",
+        "Milli Bir Destan: Ya İstiklal Ya Ölüm",
+        "Atatürkçülük ve Çağdaşlaşan Türkiye",
+        "Demokratikleşme Çabaları",
+        "Atatürk Dönemi Türk Dış Politikası",
+        "Atatürk'ün Ölümü ve Sonrası"
+    ],
+    "LGS İngilizce": [
+        "Friendship",
+        "Teen Life",
+        "In The Kitchen",
+        "On The Phone",
+        "The Internet",
+        "Adventures",
+        "Tourism",
+        "Chores",
+        "Science",
+        "Natural Forces"
+    ],
+    "LGS Din Kültürü": [
+        "Kader İnancı",
+        "Zekat ve Sadaka",
+        "Din ve Hayat",
+        "Hz. Muhammed'in Örnekliği",
+        "Kur'an-ı Kerim ve Özellikleri"
     ]
 }
