@@ -6,49 +6,49 @@ Haftalık ders çalışma programınızı saniyeler içinde hazırlamanızı, ö
 
 ## 🌟 Neler Yapabilirsiniz?
 
-* **Dinamik Tarih Yönetimi:** Programı hangi gün hazırlarsanız hazırlayın, tarihleri bugünden başlayarak otomatik olarak ileriye dönük 7 güne dağıtır.
+* **Dinamik Tarih Yönetimi:** Programınızı hangi gün hazırlarsanız hazırlayın, tarihler otomatik olarak bugünden itibaren 7 güne dağıtılır.
+* **Bulut Yedekleme:** Hazırladığınız planları buluta kaydedin; size özel "Erişim Kodu" ile istediğiniz cihazdan programınıza tekrar ulaşın.
+* **Yüksek Güvenlik:** Verileriniz modern güvenlik standartlarıyla korunur, kişisel planlarınız sadece sizin kodunuzla erişilebilir kalır.
 * **Hızlı Ders Arama:** Geniş konu listesi içerisinde arama yaparak saniyeler içinde derslerinizi seçebilirsiniz.
 * **Kişiselleştirilmiş Notlar:** Her dersin altına soru sayısı, video bilgisi veya özel hatırlatıcılar ekleyebilirsiniz.
-* **Profesyonel PDF Çıktısı:** Hazırladığınız programı A4 boyutunda, şık ve baskıya hazır bir şekilde indirebilirsiniz.
-* **Kolay Düzenleme:** Yanlış eklediğiniz dersleri tek tıkla silebilir, yerlerini değiştirebilirsiniz.
+* **Profesyonel PDF Çıktısı:** Programınızı A4 boyutunda, şık ve baskıya hazır bir şekilde indirin.
 
 ---
 
-## 🛠️ Nasıl Çalışır
+## 🛠️ Nasıl Çalışır?
 
-1. Sol panelden öğrenci adını ve hedef günü seçin.
-2. Ders/Konu arama kutusundan eklemek istediğiniz konuyu bulup seçin.
-3. İsteğe bağlı ek not girin (örn. "40 Soru / 2 Test").
+1. Sol panelden adınızı ve hedef gününüzü seçin.
+2. Ders/Konu arama kutusundan istediğiniz konuyu bulup ekleyin.
+3. İsteğe bağlı notunuzu girin (örn. "40 Soru / 2 Test").
 4. **PROGRAMA EKLE** butonuna tıklayın.
-5. Programa eklenen öğenin üzerine gelince çıkan **✕** butonu ile silebilirsiniz.
-6. **PDF İNDİR** butonu ile programı A4 PDF olarak kaydedin.
+5. **KAYDET VE PDF AL** butonuna basarak özel erişim kodunuzu alın.
+6. **PDF İNDİR** butonu ile programınızı telefonunuza veya bilgisayarınıza kaydedin.
 
 ---
 
 ## 📈 Sürüm Geçmişi ve Güncellemeler
 
-Uygulamanın gelişim sürecine dair detaylı sürüm bilgilerine aşağıdan ulaşabilirsiniz:
-
 | Sürüm | Durum | Yenilikler & İyileştirmeler | Tarih |
 | :--- | :--- | :--- | :--- |
-| **v1.4.2** | ✅ Güncel | **PDF Kayma Sorunu Çözüldü:** Bazı tarayıcılarda oluşan sayfa kayma sorunu için "Görünmez Render Kabı" teknolojisine geçildi. Çıktılar artık tam A4 boyutunda. | 14.04.2026 |
+| **v2.3.7** | ✅ Güncel | **Güvenlik Altyapısı Güçlendirildi:** Veri erişim sistemleri tamamen yenilenerek uygulama çok daha güvenli ve hızlı hale getirildi. | 19.04.2026 |
+| **v2.2.0** | ✅ Tamamlandı | **Bulut Yedekleme Desteği:** Artık planlarınızı buluta kaydedebilir, benzersiz kodunuzla her yerden ulaşabilirsiniz. | 17.04.2026 |
+| **v2.1.0** | ✅ Tamamlandı | **Veri Koruma Güncellemesi:** Kullanıcı gizliliğini korumak amacıyla veri erişim kısıtlamaları ve altyapı optimizasyonları yapıldı. | 16.04.2026 |
+| **v2.0.0** | ✅ Tamamlandı | **Yeni Nesil Altyapı:** Uygulama, cihaz tabanlı saklama sisteminden merkezi bulut sistemine taşındı. | 15.04.2026 |
+| **v1.4.2** | ✅ Tamamlandı | **PDF Kayma Sorunu Çözüldü:** Bazı tarayıcılarda oluşan sayfa kayma sorunu için "Görünmez Render Kabı" teknolojisine geçildi. Çıktılar artık tam A4 boyutunda. | 14.04.2026 |
 | **v1.3.0** | ✅ Tamamlandı | **Akıllı Takvim Sistemi:** Kullanıcının haftayı Pazartesi'den başlatma zorunluluğu kaldırıldı. Program artık "bugünden" başlayarak 7 günü planlıyor. |  |
 | **v1.2.0** | ✅ Tamamlandı | **Gelişmiş Arama:** Ders ve konular için filtreleme özelliği eklendi. Konu listesi YKS müfredatına uygun şekilde güncellendi. |  |
 | **v1.1.0** | ✅ Tamamlandı | **Tasarım İyileştirmesi:** "Konsept" tasarımı uygulandı. Mobil cihazlar için kullanıcı arayüzü (UI) optimize edildi. |  |
-| **v1.0.0** | ✅ Tamamlandı | **İlk Yayın:** Temel program oluşturma, ders ekleme ve PDF alma özellikleri ile uygulama hayata geçti. |  |
+| **v1.0.0** | ✅ Tamamlandı | **İlk Yayın:** Temel program oluşturma ve PDF alma özellikleri ile uygulama hayata geçti. |  |
 
 ---
 
 ## 💡 Gelecek Planları (Roadmap)
 
-- [ ] Sayfayı yatay/dikey ayarlama.
-- [ ] Ders eklenirken sürükle-bırak özelliği.
-- [ ] Hazırlanan program çıktılarını tekrar açıp düzenleme yapma.
-- [ ] Tamamlanan derslerin üzerini çizme özelliği.
+- [ ] **Sürükle-Bırak:** Derslerin yerini sürükleyerek kolayca değiştirebilme.
+- [ ] **İnteraktif Takip:** Tamamlanan derslerin üzerini uygulama içinden çizebilme.
+- [ ] **İstatistikler:** Haftalık soru çözüm sayılarını grafiklerle takip edebilme.
 
 ---
 
-> **Geliştirici Notu:** Bu uygulama öğrencilerin çalışma süreçlerini kolaylaştırmak amacıyla geliştirilmiştir.  
+> **Geliştirici Notu:** Bu uygulama, öğrencilerin sınav hazırlık sürecini daha düzenli ve verimli hale getirmek için geliştirilmiştir.  
 > *Tasarlayan ve Geliştiren:* **meliktecir**
-
-
