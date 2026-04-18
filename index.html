@@ -1,75 +1,96 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Axis - YKS Planlayıcı Pro</title>
+    <title>Axis Education Manager v2.0</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body class="bg-gray-200 font-sans flex flex-col md:flex-row min-h-screen">
 
-    <!-- Ekran dışı render kabı -->
-    <div id="offscreen-wrapper"></div>
-
     <!-- Sol Panel -->
-    <div class="w-full md:w-80 bg-white shadow-2xl p-6 no-print md:sticky md:top-0 md:h-screen overflow-y-auto flex-shrink-0">
-        <h1 class="text-xl font-black text-gray-800 mb-6 border-b-2 border-gray-100 pb-2 uppercase tracking-tighter">Program Ayarları</h1>
+    <div
+        class="w-full md:w-80 bg-white shadow-2xl p-6 no-print md:sticky md:top-0 md:h-screen overflow-y-auto flex-shrink-0 z-10">
+        <h1 class="text-xl font-black text-gray-800 mb-4 border-b-2 border-gray-100 pb-2 uppercase tracking-tighter">
+            Program Ayarları</h1>
 
-        <div class="space-y-4">
+        <div class="space-y-2">
             <div>
                 <label class="text-xs font-bold text-gray-500 uppercase">Öğrenci Bilgisi</label>
-                <input type="text" id="studentName" placeholder="Ad Soyad"
+                <input type="text" id="studentName" placeholder="Ad Soyad" autocomplete="off"
                     class="w-full border-2 border-gray-100 p-2 rounded-lg focus:border-gray-400 outline-none transition-all text-sm">
             </div>
 
             <div>
                 <label class="text-xs font-bold text-gray-500 uppercase">Hedef Gün</label>
-                <select id="daySelect" class="w-full border-2 border-gray-100 p-2 rounded-lg outline-none cursor-pointer text-sm">
-                    <option value="pazartesi">Pazartesi</option>
-                    <option value="sali">Salı</option>
-                    <option value="carsamba">Çarşamba</option>
-                    <option value="persembe">Perşembe</option>
-                    <option value="cuma">Cuma</option>
-                    <option value="cumartesi">Cumartesi</option>
-                    <option value="pazar">Pazar</option>
+                <select id="daySelect"
+                    class="w-full border-2 border-gray-100 p-2 rounded-lg outline-none cursor-pointer text-sm">
+                    <option value="0">Pazartesi</option>
+                    <option value="1">Salı</option>
+                    <option value="2">Çarşamba</option>
+                    <option value="3">Perşembe</option>
+                    <option value="4">Cuma</option>
+                    <option value="5">Cumartesi</option>
+                    <option value="6">Pazar</option>
                 </select>
             </div>
 
             <div>
                 <label class="text-xs font-bold text-gray-500 uppercase">Ders/Konu Ara</label>
-                <input type="text" id="searchInput" placeholder="Örn: Fizik..."
-                    class="w-full border-2 border-gray-100 p-2 rounded-t-lg focus:border-gray-400 outline-none transition-all text-sm">
-                <select id="subjectSelect"
-                    class="w-full border-2 border-t-0 border-gray-100 p-2 rounded-b-lg h-40 outline-none text-xs"
-                    size="5"></select>
+
+                <div class="border-2 border-gray-100 rounded-lg overflow-hidden">
+
+                    <input type="text" id="searchInput" placeholder="Örn: Fizik..." autocomplete="off"
+                        class="w-full p-2 outline-none text-sm border-b border-gray-100">
+
+                    <select id="subjectSelect" class="w-full p-2 outline-none text-xs border-b border-gray-100"
+                        size="10"></select>
+
+                    <input type="text" id="noteInput" placeholder="40 Soru / 2 Test" autocomplete="off"
+                        class="w-full p-2 outline-none text-sm bg-gray-100">
+                </div>
             </div>
 
-            <div>
-                <label class="text-xs font-bold text-gray-500 uppercase">Ek Not</label>
-                <input type="text" id="noteInput" placeholder="40 Soru / 2 Test"
-                    class="w-full border-2 border-gray-100 p-2 rounded-lg outline-none text-sm">
-            </div>
-
-            <button onclick="addToSchedule()"
+            <button onclick="addItem()"
                 class="w-full bg-blue-600 text-white py-3 rounded-xl hover:bg-blue-700 font-black shadow-lg shadow-blue-200 transition-all active:scale-95">
                 PROGRAMA EKLE
             </button>
 
-            <div class="pt-4 border-t mt-6 text-center">
-                <button id="pdf-btn" onclick="generatePDF()"
-                    class="w-full bg-green-600 text-white py-4 rounded-xl hover:bg-green-700 font-black shadow-lg shadow-green-100 transition-all uppercase tracking-widest">
-                    PDF İNDİR
+            <div class="pt-2 border-t mt-2">
+
+                <button onclick="saveToCloud()"
+                    class="btn-save w-full bg-green-600 text-white py-4 rounded-xl hover:bg-green-700 font-black shadow-lg shadow-green-100 transition-all uppercase tracking-widest mt-2">
+                    KAYDET VE PDF AL
                 </button>
-                <p class="text-[10px] text-gray-400 mt-2 italic">meliktecir</p>
+
+                <!-- Bulut Yükleme Alanı -->
+                <div class="flex gap-2 mt-4">
+                    <input type="text" id="code-input" placeholder="Kod Girin (12 Hane)" maxlength="16"
+                        autocomplete="off"
+                        class="flex-1 w-full border-2 border-gray-100 p-2 rounded-lg outline-none text-sm font-bold uppercase">
+                    <button onclick="loadFromCloud()"
+                        class="bg-gray-100 text-gray-700 px-4 rounded-lg font-bold hover:bg-gray-200 text-sm">
+                        YÜKLE
+                    </button>
+                </div>
+
+
+                <p class="text-[10px] text-gray-400 mt-2 italic text-center">meliktecir</p>
             </div>
         </div>
     </div>
 
     <!-- Önizleme Alanı -->
-    <div id="preview-container" class="flex-1 p-4 md:p-12 flex flex-col items-center bg-gray-400 overflow-y-auto">
+    <div id="preview-container"
+        class="flex-1 p-4 md:p-12 flex flex-col items-center bg-gray-400 overflow-y-auto w-full">
         <div id="pdf-content" class="bg-white shadow-2xl p-10 relative">
 
             <!-- Başlık -->
@@ -79,33 +100,43 @@
                     <p class="text-[9px] text-gray-500 mt-1 uppercase tracking-widest font-bold">Konsept Planlayıcı</p>
                 </div>
                 <div class="text-right">
-                    <p id="display-name" class="text-xl font-black uppercase text-gray-900 tracking-tight leading-none mb-1">ÖĞRENCİ ADI</p>
+                    <p id="display-name"
+                        class="text-xl font-black uppercase text-gray-900 tracking-tight leading-none mb-1">ÖĞRENCİ ADI
+                    </p>
                     <p id="display-date" class="text-gray-500 text-[10px] font-bold uppercase tracking-widest">TARİH</p>
                 </div>
             </div>
 
             <!-- Tablo -->
-            <table class="w-full border border-black">
+            <table class="w-full border border-black table-fixed">
                 <thead>
                     <tr class="bg-gray-100 text-gray-900 text-[10px] font-bold">
-                        <th class="border border-black py-2 uppercase">Pazartesi<span id="date-pazartesi" class="block text-[8px] font-normal normal-case"></span></th>
-                        <th class="border border-black py-2 uppercase">Salı<span id="date-sali" class="block text-[8px] font-normal normal-case"></span></th>
-                        <th class="border border-black py-2 uppercase">Çarşamba<span id="date-carsamba" class="block text-[8px] font-normal normal-case"></span></th>
-                        <th class="border border-black py-2 uppercase">Perşembe<span id="date-persembe" class="block text-[8px] font-normal normal-case"></span></th>
-                        <th class="border border-black py-2 uppercase">Cuma<span id="date-cuma" class="block text-[8px] font-normal normal-case"></span></th>
-                        <th class="border border-black py-2 uppercase">Cumartesi<span id="date-cumartesi" class="block text-[8px] font-normal normal-case"></span></th>
-                        <th class="border border-black py-2 uppercase">Pazar<span id="date-pazar" class="block text-[8px] font-normal normal-case"></span></th>
+                        <th class="border border-black py-2 uppercase">Pazartesi<span id="date-0"
+                                class="block text-[8px] font-normal normal-case"></span></th>
+                        <th class="border border-black py-2 uppercase">Salı<span id="date-1"
+                                class="block text-[8px] font-normal normal-case"></span></th>
+                        <th class="border border-black py-2 uppercase">Çarşamba<span id="date-2"
+                                class="block text-[8px] font-normal normal-case"></span></th>
+                        <th class="border border-black py-2 uppercase">Perşembe<span id="date-3"
+                                class="block text-[8px] font-normal normal-case"></span></th>
+                        <th class="border border-black py-2 uppercase">Cuma<span id="date-4"
+                                class="block text-[8px] font-normal normal-case"></span></th>
+                        <th class="border border-black py-2 uppercase">Cumartesi<span id="date-5"
+                                class="block text-[8px] font-normal normal-case"></span></th>
+                        <th class="border border-black py-2 uppercase">Pazar<span id="date-6"
+                                class="block text-[8px] font-normal normal-case"></span></th>
                     </tr>
                 </thead>
                 <tbody class="text-[9px]">
                     <tr>
-                        <td id="pazartesi" class="border border-black p-1 align-top bg-white" style="height:230mm;min-width:0"></td>
-                        <td id="sali"       class="border border-black p-1 align-top bg-white"></td>
-                        <td id="carsamba"   class="border border-black p-1 align-top bg-white"></td>
-                        <td id="persembe"   class="border border-black p-1 align-top bg-white"></td>
-                        <td id="cuma"       class="border border-black p-1 align-top bg-white"></td>
-                        <td id="cumartesi"  class="border border-black p-1 align-top bg-white"></td>
-                        <td id="pazar"      class="border border-black p-1 align-top bg-white"></td>
+                        <td id="day-0" class="border border-black p-1 align-top bg-white"
+                            style="height:230mm;min-width:0"></td>
+                        <td id="day-1" class="border border-black p-1 align-top bg-white"></td>
+                        <td id="day-2" class="border border-black p-1 align-top bg-white"></td>
+                        <td id="day-3" class="border border-black p-1 align-top bg-white"></td>
+                        <td id="day-4" class="border border-black p-1 align-top bg-white"></td>
+                        <td id="day-5" class="border border-black p-1 align-top bg-white"></td>
+                        <td id="day-6" class="border border-black p-1 align-top bg-white"></td>
                     </tr>
                 </tbody>
             </table>
@@ -114,6 +145,8 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="env.js"></script>
+    <script src="app.js"></script>
 </body>
+
 </html>
