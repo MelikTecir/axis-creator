@@ -135,5 +135,70 @@
         "Din ve Hayat",
         "Hz. Muhammed'in Örnekliği",
         "Kur'an-ı Kerim ve Özellikleri"
+    ],
+    "7. Sınıf Türkçe": [
+        "Fiiller",
+        "Sözcükte Anlam",
+        "Cümlede Anlam",
+        "Fiillerde Yapı",
+        "Ek Fiiller",
+        "Zarflar",
+        "Parçada Anlam",
+        "Söz Gruplarında Anlam",
+        "Anlatım Bozuklukları",
+        "Yazım Kuralları",
+        "Noktalama İşaretleri",
+        "Metin Türleri"
+    ],
+    "7. Sınıf Matematik": [
+        "Tam Sayılarla İşlemler",
+        "Rasyonel Sayılar",
+        "Rasyonel Sayılarla İşlemler",
+        "Cebirsel İfadeler",
+        "Eşitlik ve Denklem",
+        "Oran ve Orantı",
+        "Yüzdeler",
+        "Doğrular ve Açılar",
+        "Çokgenler",
+        "Çember ve Daire",
+        "Veri Analizi",
+        "Cisimlerin Farklı Yönlerden Görünümleri"
+    ],
+    "7. Sınıf Fen Bilimleri": [
+        "Güneş Sistemi ve Ötesi",
+        "Hücre ve Bölünmeler",
+        "Kuvvet ve Enerji",
+        "Saf Madde ve Karışımlar",
+        "Işığın Madde ile Etkileşimi",
+        "Canlılarda Üreme, Büyüme ve Gelişme",
+        "Elektrik Devreleri"
+    ],
+    "7. Sınıf Sosyal Bilgiler": [
+        "Birey ve Toplum",
+        "Kültür ve Miras",
+        "İnsanlar, Yerler ve Çevre",
+        "Bilim, Teknoloji ve Toplum",
+        "Üretim, Dağıtım ve Tüketim",
+        "Etkin Vatandaşlık",
+        "Küresel Bağlantılar"
+    ],
+    "7. Sınıf İngilizce": [
+        "Appearance and Personality",
+        "Sports",
+        "Biographies",
+        "Wild Animals",
+        "Television",
+        "Celebrations",
+        "Dreams",
+        "Public Buildings",
+        "Environment",
+        "Planets"
+    ],
+    "7. Sınıf Din Kültürü": [
+        "Melek ve Ahiret İnancı",
+        "Hac ve Kurban",
+        "Ahlaki Davranışlar",
+        "Allah’ın Kulu ve Elçisi Hz. Muhammed (s.a.v)",
+        "İslam Düşüncesinde Yorumlar"
     ]
 }
