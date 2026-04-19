@@ -695,7 +695,7 @@ async function loadFromCloud() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${SUPABASE_KEY}` // anon key yeterli
+                    //'Authorization': `Bearer ${SUPABASE_KEY}` // anon key yeterli
                 },
                 body: JSON.stringify({ code })
             }
