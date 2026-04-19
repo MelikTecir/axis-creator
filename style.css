@@ -1,18 +1,5 @@
-@media print {
-    .no-print {
-        display: none !important;
-    }
-
-    body {
-        background-color: white;
-        padding: 0;
-    }
-
-    #pdf-content {
-        margin: 0;
-        border: none;
-        width: 100%;
-    }
+body {
+    -webkit-font-smoothing: antialiased;
 }
 
 #preview-container {
@@ -29,26 +16,11 @@
 }
 
 #pdf-content {
+    /* A4 portrait boyutları */
     width: 210mm;
     min-height: 297mm;
     box-sizing: border-box;
     background: white;
-}
-
-/*
- * Ekran dışı render kabı.
- * left: -9999px ile görünmez ama tarayıcı tam layout hesaplar.
- * html2canvas bu kabı (0,0) referans alarak render eder — kayma olmaz.
- */
-#offscreen-wrapper {
-    position: absolute;
-    top: 0;
-    left: -9999px;
-    width: 210mm;
-    background: white;
-    overflow: visible;
-    z-index: -1;
-    pointer-events: none;
 }
 
 table {
@@ -59,4 +31,31 @@ table {
 
 td {
     vertical-align: top;
+    /* Metinlerin taşmamasını sağla */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Veri eklendiğinde çalışacak animasyon */
+@keyframes flashAdd {
+    0% {
+        transform: scale(1);
+        background-color: transparent;
+    }
+
+    50% {
+        transform: scale(1.02);
+        background-color: #dcfce7;
+    }
+
+    /* Hafif yeşil (Tailwind green-100) */
+    100% {
+        transform: scale(1);
+        background-color: transparent;
+    }
+}
+
+.added-flash {
+    animation: flashAdd 0.4s ease-out;
+    border-radius: 8px;
 }

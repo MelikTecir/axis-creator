@@ -127,10 +127,16 @@ function populateDropdown(filter = "") {
                 const opt = document.createElement('div');
                 opt.className = 'px-2 py-1.5 cursor-pointer text-gray-700 hover:bg-blue-500 hover:text-white transition-colors text-xs flex justify-between items-center group opt-item';
                 
+                const spanKonu = document.createElement('span');
+                spanKonu.className = 'truncate';
+                spanKonu.textContent = konu;
+                opt.appendChild(spanKonu);
+
                 if (currentSubjectFilter === '') {
-                   opt.innerHTML = `<span class="truncate">${konu}</span> <span class="text-[9px] opacity-40 group-hover:opacity-100 uppercase ml-2 flex-shrink-0">${cleanDersAdı}</span>`;
-                } else {
-                   opt.innerHTML = `<span class="truncate">${konu}</span>`;
+                    const spanDers = document.createElement('span');
+                    spanDers.className = 'text-[9px] opacity-40 group-hover:opacity-100 uppercase ml-2 flex-shrink-0';
+                    spanDers.textContent = cleanDersAdı;
+                    opt.appendChild(spanDers);
                 }
                 
                 opt.draggable = true;
@@ -282,12 +288,33 @@ function renderTable() {
             div.dataset.day = i;
             div.dataset.idx = idx;
 
-            div.innerHTML = `
-                <div class="font-black text-gray-800 uppercase text-[9px] mb-0.5 leading-none pointer-events-none">${item.category}</div>
-                <div class="text-gray-700 font-bold text-[10px] leading-tight mb-1 uppercase pointer-events-none">${item.topic}</div>
-                ${item.note ? '<div class="text-gray-400 italic text-[9px] mt-1 border-t border-gray-100 pt-1 pointer-events-none">📍 ' + item.note + '</div>' : ''}
-                <button data-day="${i}" data-idx="${idx}" class="del-btn delete-btn no-print absolute -right-1 -top-1 bg-red-500 text-white w-4 h-4 rounded-full text-[8px] flex items-center justify-center shadow-md cursor-pointer hover:bg-red-600">✕</button>
-            `;
+            // Kategori
+            const catDiv = document.createElement('div');
+            catDiv.className = "font-black text-gray-800 uppercase text-[9px] mb-0.5 leading-none pointer-events-none";
+            catDiv.textContent = item.category;
+            div.appendChild(catDiv);
+
+            // Konu
+            const topicDiv = document.createElement('div');
+            topicDiv.className = "text-gray-700 font-bold text-[10px] leading-tight mb-1 uppercase pointer-events-none";
+            topicDiv.textContent = item.topic;
+            div.appendChild(topicDiv);
+
+            // Not
+            if (item.note) {
+                const noteDiv = document.createElement('div');
+                noteDiv.className = "text-gray-400 italic text-[9px] mt-1 border-t border-gray-100 pt-1 pointer-events-none";
+                noteDiv.textContent = "📍 " + item.note;
+                div.appendChild(noteDiv);
+            }
+
+            // Silme Butonu
+            const delBtn = document.createElement('button');
+            delBtn.dataset.day = i;
+            delBtn.dataset.idx = idx;
+            delBtn.className = "del-btn delete-btn no-print absolute -right-1 -top-1 bg-red-500 text-white w-4 h-4 rounded-full text-[8px] flex items-center justify-center shadow-md cursor-pointer hover:bg-red-600";
+            delBtn.textContent = "✕";
+            div.appendChild(delBtn);
 
             div.addEventListener('dragstart', (e) => {
                 e.dataTransfer.setData('application/json', JSON.stringify({ type: 'move_item', day: i, idx: idx }));
