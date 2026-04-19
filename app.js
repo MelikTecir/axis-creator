@@ -37,14 +37,52 @@ async function loadData() {
 function populateDropdown(filter = "") {
     const select = document.getElementById('subjectSelect');
     select.innerHTML = "";
+
+    select.value = select.value || "";
+
     const lc = filter.toLowerCase();
     for (const ders in konularData) {
         konularData[ders].forEach(konu => {
             const combined = `${ders} - ${konu}`;
             if (!filter || combined.toLowerCase().includes(lc)) {
-                const opt = document.createElement('option');
-                opt.value = combined;
+                const opt = document.createElement('div');
+                opt.className = 'px-2 py-1.5 cursor-pointer text-gray-700 hover:bg-blue-500 hover:text-white transition-colors truncate text-xs';
                 opt.textContent = combined;
+                opt.draggable = true;
+
+                if (select.value === combined) {
+                    opt.classList.add('bg-blue-500', 'text-white');
+                    opt.classList.remove('text-gray-700');
+                }
+
+                opt.addEventListener('click', () => {
+                    select.value = combined;
+                    Array.from(select.children).forEach(child => {
+                        child.classList.remove('bg-blue-500', 'text-white');
+                        child.classList.add('text-gray-700');
+                    });
+                    opt.classList.add('bg-blue-500', 'text-white');
+                    opt.classList.remove('text-gray-700');
+                });
+
+                opt.addEventListener('dblclick', () => {
+                    select.value = combined;
+                    addItem();
+                });
+
+                opt.addEventListener('dragstart', (e) => {
+                    e.dataTransfer.setData('text/plain', combined);
+                    e.dataTransfer.effectAllowed = 'copy';
+
+                    select.value = combined;
+                    Array.from(select.children).forEach(child => {
+                        child.classList.remove('bg-blue-500', 'text-white');
+                        child.classList.add('text-gray-700');
+                    });
+                    opt.classList.add('bg-blue-500', 'text-white');
+                    opt.classList.remove('text-gray-700');
+                });
+
                 select.appendChild(opt);
             }
         });
@@ -89,7 +127,13 @@ document.getElementById('studentName').addEventListener('input', (e) => {
 // ============================================================
 // Veri Ekleme
 // ============================================================
+// Dosyanın en üstüne, diğer değişkenlerin yanına ekle
+let isAdding = false;
+
 function addItem() {
+    // 🛡️ Koruma Kalkanı: Eğer işlem zaten sürüyorsa (kilitliyse) geri dön
+    if (isAdding) return;
+
     const day = parseInt(document.getElementById('daySelect').value, 10);
     const selected = document.getElementById('subjectSelect').value;
     const note = document.getElementById('noteInput').value.trim();
@@ -98,6 +142,9 @@ function addItem() {
         showNotification("Lütfen bir konu seçin!", "error");
         return;
     }
+
+    // İşlem başladığı an kilidi devreye sok
+    isAdding = true;
 
     const splitIdx = selected.indexOf(' - ');
     let category = selected;
@@ -110,6 +157,18 @@ function addItem() {
     programData.items[day].push({ category, topic, note });
     document.getElementById('noteInput').value = "";
     renderTable();
+
+    // Görsel Geri Bildirim (Önceki adımda eklediğimiz animasyon)
+    const dayCell = document.getElementById(`day-${day}`);
+    if (dayCell) {
+        dayCell.classList.add('added-flash');
+        setTimeout(() => { dayCell.classList.remove('added-flash'); }, 450);
+    }
+
+    // 🕒 Kilidi 300ms sonra aç (Böylece çift tıklamanın ikinci vuruşu süzülmüş olur)
+    setTimeout(() => {
+        isAdding = false;
+    }, 300);
 }
 
 // ============================================================
@@ -133,13 +192,28 @@ function renderTable() {
 
         programData.items[i].forEach((item, idx) => {
             const div = document.createElement('div');
-            div.className = "item-container group relative mb-3 p-2 border-b border-gray-200 hover:bg-gray-50 transition-colors text-left";
+            div.className = "item-container group relative mb-3 p-2 border-b border-gray-200 hover:bg-gray-50 transition-colors text-left cursor-move bg-white";
+            div.draggable = true;
+            div.dataset.day = i;
+            div.dataset.idx = idx;
+
             div.innerHTML = `
-                <div class="font-black text-gray-800 uppercase text-[9px] mb-0.5 leading-none">${item.category}</div>
-                <div class="text-gray-700 font-bold text-[10px] leading-tight mb-1 uppercase">${item.topic}</div>
-                ${item.note ? '<div class="text-gray-400 italic text-[9px] mt-1 border-t border-gray-100 pt-1">📍 ' + item.note + '</div>' : ''}
+                <div class="font-black text-gray-800 uppercase text-[9px] mb-0.5 leading-none pointer-events-none">${item.category}</div>
+                <div class="text-gray-700 font-bold text-[10px] leading-tight mb-1 uppercase pointer-events-none">${item.topic}</div>
+                ${item.note ? '<div class="text-gray-400 italic text-[9px] mt-1 border-t border-gray-100 pt-1 pointer-events-none">📍 ' + item.note + '</div>' : ''}
                 <button data-day="${i}" data-idx="${idx}" class="del-btn delete-btn no-print absolute -right-1 -top-1 bg-red-500 text-white w-4 h-4 rounded-full text-[8px] flex items-center justify-center shadow-md cursor-pointer hover:bg-red-600">✕</button>
             `;
+
+            div.addEventListener('dragstart', (e) => {
+                e.dataTransfer.setData('application/json', JSON.stringify({ type: 'move_item', day: i, idx: idx }));
+                e.dataTransfer.effectAllowed = 'move';
+                setTimeout(() => div.classList.add('opacity-50'), 0);
+            });
+
+            div.addEventListener('dragend', () => {
+                div.classList.remove('opacity-50');
+            });
+
             cell.appendChild(div);
         });
     }
@@ -401,6 +475,94 @@ async function generatePDF(code) {
     doc.save(safeName + '_program_' + code + '.pdf');
 }
 
+// ============================================================
+// Sürükle-bırak
+// ============================================================
+
+function getDragAfterElement(container, y) {
+    const draggableElements = [...container.querySelectorAll('.item-container:not(.opacity-50)')];
+
+    return draggableElements.reduce((closest, child) => {
+        const box = child.getBoundingClientRect();
+        const offset = y - box.top - box.height / 2;
+        if (offset < 0 && offset > closest.offset) {
+            return { offset: offset, element: child };
+        } else {
+            return closest;
+        }
+    }, { offset: Number.NEGATIVE_INFINITY }).element;
+}
+
+for (let i = 0; i < 7; i++) {
+    const dropZone = document.getElementById(`day-${i}`);
+    if (!dropZone) continue;
+
+    dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZone.classList.add('bg-blue-50');
+    });
+
+    dropZone.addEventListener('dragleave', (e) => {
+        dropZone.classList.remove('bg-blue-50');
+    });
+
+    dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('bg-blue-50');
+
+        let dropIndex = programData.items[i].length;
+        const afterElement = getDragAfterElement(dropZone, e.clientY);
+
+        if (afterElement) {
+            dropIndex = parseInt(afterElement.dataset.idx, 10);
+        }
+
+        // Tablodaki mevcut bir elemanı taşıma durumu
+        const dataStr = e.dataTransfer.getData('application/json');
+        if (dataStr) {
+            try {
+                const parsed = JSON.parse(dataStr);
+                if (parsed.type === 'move_item') {
+                    const sourceDay = parsed.day;
+                    const sourceIdx = parsed.idx;
+
+                    if (sourceDay === i && sourceIdx === dropIndex) return;
+                    if (sourceDay === i && sourceIdx === dropIndex - 1 && !afterElement) return;
+
+                    const itemToMove = programData.items[sourceDay][sourceIdx];
+
+                    let insertIndex = dropIndex;
+                    if (sourceDay === i && sourceIdx < dropIndex) {
+                        insertIndex--;
+                    }
+
+                    programData.items[sourceDay].splice(sourceIdx, 1);
+                    programData.items[i].splice(insertIndex, 0, itemToMove);
+
+                    renderTable();
+                    return;
+                }
+            } catch (err) { }
+        }
+
+        // Listeden yeni ders ekleme durumu
+        const combined = e.dataTransfer.getData('text/plain');
+        if (!combined || !combined.includes(' - ')) return;
+
+        const splitIdx = combined.indexOf(' - ');
+        const category = combined.substring(0, splitIdx);
+        const topic = combined.substring(splitIdx + 3);
+        const note = document.getElementById('noteInput').value.trim();
+
+        programData.items[i].splice(dropIndex, 0, { category, topic, note });
+        document.getElementById('noteInput').value = "";
+
+        renderTable();
+
+        dropZone.classList.add('added-flash');
+        setTimeout(() => { dropZone.classList.remove('added-flash'); }, 450);
+    });
+}
 // ============================================================
 // Yükleme
 // ============================================================
