@@ -1,54 +1,94 @@
 # 🚀 Axis - YKS Planlayıcı Pro
 
-Haftalık ders çalışma programınızı saniyeler içinde hazırlamanızı, özelleştirmenizi ve profesyonel bir çıktı (PDF) almanızı sağlayan kullanıcı dostu bir web uygulamasıdır. Özellikle konsepte uygun tasarımıyla, öğrencilerin haftalık hedeflerini net bir şekilde görmesini sağlar.
+Axis, öğrencilerin haftalık ders çalışma programlarını hızlı, düzenli ve profesyonel bir şekilde oluşturmasını sağlayan modern bir web uygulamasıdır. Planlama sürecini basitleştirir, görselleştirir ve PDF çıktısı ile taşınabilir hale getirir.
 
 ---
 
-## 🌟 Neler Yapabilirsiniz?
+## 🌟 Temel Özellikler
 
-* **Dinamik Tarih Yönetimi:** Programınızı hangi gün hazırlarsanız hazırlayın, tarihler otomatik olarak bugünden itibaren 7 güne dağıtılır.
-* **Bulut Yedekleme:** Hazırladığınız planları buluta kaydedin; size özel "Erişim Kodu" ile istediğiniz cihazdan programınıza tekrar ulaşın.
-* **Yüksek Güvenlik:** Verileriniz modern güvenlik standartlarıyla korunur, kişisel planlarınız sadece sizin kodunuzla erişilebilir kalır.
-* **Hızlı Ders Arama:** Geniş konu listesi içerisinde arama yaparak saniyeler içinde derslerinizi seçebilirsiniz.
-* **Kişiselleştirilmiş Notlar:** Her dersin altına soru sayısı, video bilgisi veya özel hatırlatıcılar ekleyebilirsiniz.
-* **Profesyonel PDF Çıktısı:** Programınızı A4 boyutunda, şık ve baskıya hazır bir şekilde indirin.
+### 📅 Akıllı Takvim Sistemi
+- Program oluşturulduğu güne göre otomatik 7 günlük planlama yapar.
+- Haftayı sabit günlere bağlı kalmadan “bugünden itibaren” başlatır.
+
+### 📚 Gelişmiş Ders & Konu Yönetimi
+- Tüm YKS ders ve konu listeleri detaylı ve güncel şekilde hazırlanmıştır.
+- Çift tıklama ile hızlı konu ekleme özelliği.
+- Dersleri sürükle-bırak yöntemiyle ekleme imkanı.
+
+### 🔀 Sürükle-Bırak Sistemleri
+- Derslerin sırasını kolayca değiştirme.
+- Plan üzerinde hızlı yeniden düzenleme.
+- Kullanıcı dostu görsel yönetim.
+
+### ☁️ Bulut Tabanlı Sistem
+- Planlarınızı buluta kaydedebilirsiniz.
+- Size özel erişim kodu ile farklı cihazlardan ulaşım.
+- Veri kaybını önleyen güvenli yapı.
+
+### 🔒 Güvenlik Altyapısı
+- Modern veri koruma sistemleri ile güvenli kullanım.
+- Kullanıcı planları yalnızca erişim kodu ile görüntülenebilir.
+- Optimize edilmiş veri erişim mimarisi.
+
+### 🧠 Kişiselleştirme
+- Her ders için özel not ekleme (soru sayısı, test bilgisi vb.).
+- Kendi çalışma stiline göre program oluşturma.
+
+### 📄 Profesyonel PDF Çıktısı
+- A4 formatında düzenli ve şık çıktı.
+- Yazdırmaya uygun tasarım.
+- Mobil ve masaüstü uyumlu PDF üretimi.
 
 ---
 
-## 🛠️ Nasıl Çalışır?
+## ⚙️ Kullanım Adımları
 
-1. Sol panelden adınızı ve hedef gününüzü seçin.
-2. Ders/Konu arama kutusundan istediğiniz konuyu bulup ekleyin.
-3. İsteğe bağlı notunuzu girin (örn. "40 Soru / 2 Test").
-4. **PROGRAMA EKLE** butonuna tıklayın.
-5. **KAYDET VE PDF AL** butonuna basarak özel erişim kodunuzu alın.
-6. **PDF İNDİR** butonu ile programınızı telefonunuza veya bilgisayarınıza kaydedin.
+1. Adınızı ve hedef gününüzü seçin.
+2. Ders veya konu arama panelinden seçim yapın.
+3. İsteğe bağlı not ekleyin.
+4. “Programa Ekle” butonuna tıklayın.
+5. Programı kaydedip erişim kodunuzu alın.
+6. PDF indirerek çıktınızı alın.
 
 ---
 
-## 📈 Sürüm Geçmişi ve Güncellemeler
+## 📈 Sürüm Geçmişi
 
 | Sürüm | Durum | Yenilikler & İyileştirmeler | Tarih |
 | :--- | :--- | :--- | :--- |
-| **v2.3.7** | ✅ Güncel | **Güvenlik Altyapısı Güçlendirildi:** Veri erişim sistemleri tamamen yenilenerek uygulama çok daha güvenli ve hızlı hale getirildi. | 19.04.2026 |
-| **v2.2.0** | ✅ Tamamlandı | **Bulut Yedekleme Desteği:** Artık planlarınızı buluta kaydedebilir, benzersiz kodunuzla her yerden ulaşabilirsiniz. | 17.04.2026 |
-| **v2.1.0** | ✅ Tamamlandı | **Veri Koruma Güncellemesi:** Kullanıcı gizliliğini korumak amacıyla veri erişim kısıtlamaları ve altyapı optimizasyonları yapıldı. | 16.04.2026 |
-| **v2.0.0** | ✅ Tamamlandı | **Yeni Nesil Altyapı:** Uygulama, cihaz tabanlı saklama sisteminden merkezi bulut sistemine taşındı. | 15.04.2026 |
-| **v1.4.2** | ✅ Tamamlandı | **PDF Kayma Sorunu Çözüldü:** Bazı tarayıcılarda oluşan sayfa kayma sorunu için "Görünmez Render Kabı" teknolojisine geçildi. Çıktılar artık tam A4 boyutunda. | 14.04.2026 |
-| **v1.3.0** | ✅ Tamamlandı | **Akıllı Takvim Sistemi:** Kullanıcının haftayı Pazartesi'den başlatma zorunluluğu kaldırıldı. Program artık "bugünden" başlayarak 7 günü planlıyor. |  |
-| **v1.2.0** | ✅ Tamamlandı | **Gelişmiş Arama:** Ders ve konular için filtreleme özelliği eklendi. Konu listesi YKS müfredatına uygun şekilde güncellendi. |  |
-| **v1.1.0** | ✅ Tamamlandı | **Tasarım İyileştirmesi:** "Konsept" tasarımı uygulandı. Mobil cihazlar için kullanıcı arayüzü (UI) optimize edildi. |  |
-| **v1.0.0** | ✅ Tamamlandı | **İlk Yayın:** Temel program oluşturma ve PDF alma özellikleri ile uygulama hayata geçti. |  |
+| **v2.5.0** | ✅ Güncel | Çift tıklama ile konu ekleme ve sürükle-bırak ders yönetimi eklendi. | 19.04.2026 |
+| **v2.4.0** | ✅ Tamamlandı | Konu listeleri detaylandırıldı ve genişletildi. | 19.04.2026 |
+| **v2.3.7** | ✅ Tamamlandı | Güvenlik altyapısı güçlendirildi, veri erişimi optimize edildi. | 19.04.2026 |
+| **v2.2.0** | ✅ Tamamlandı | Bulut yedekleme sistemi eklendi. | 17.04.2026 |
+| **v2.1.0** | ✅ Tamamlandı | Veri gizliliği ve güvenlik geliştirmeleri yapıldı. | 16.04.2026 |
+| **v2.0.0** | ✅ Tamamlandı | Bulut tabanlı yeni altyapıya geçildi. | 15.04.2026 |
+| **v1.4.2** | ✅ Tamamlandı | PDF kayma sorunu giderildi, A4 uyumluluğu sağlandı. | 14.04.2026 |
+| **v1.0.0 - v1.3.0** | ✅ Tamamlandı | Temel program oluşturma, PDF alma, UI geliştirme, filtreleme ve akıllı takvim sistemi eklendi. | - |
 
 ---
 
-## 💡 Gelecek Planları (Roadmap)
+## 💡 Roadmap
 
-- [ ] **Sürükle-Bırak:** Derslerin yerini sürükleyerek kolayca değiştirebilme.
-- [ ] **İnteraktif Takip:** Tamamlanan derslerin üzerini uygulama içinden çizebilme.
-- [ ] **İstatistikler:** Haftalık soru çözüm sayılarını grafiklerle takip edebilme.
+### ✅ Tamamlananlar
+- [x] Program oluşturma sistemi
+- [x] PDF çıktı alma
+- [x] Sürükle-bırak ders yönetimi
+- [x] Konu listesi sistemi
+- [x] Bulut yedekleme
+- [x] Güvenlik altyapısı
+
+### ⏳ Geliştirme Aşamasında
+- [ ] İnteraktif çalışma takibi (tamamlanan ders işaretleme)
+- [ ] Haftalık istatistik grafikleri
+- [ ] Mobil uygulama versiyonu
+- [ ] Çalışma hatırlatıcı sistemi
 
 ---
 
-> **Geliştirici Notu:** Bu uygulama, öğrencilerin sınav hazırlık sürecini daha düzenli ve verimli hale getirmek için geliştirilmiştir.  
-> *Tasarlayan ve Geliştiren:* **meliktecir**
+## 📌 Not
+
+> Axis, öğrencilerin sınav sürecini daha planlı, ölçülebilir ve verimli hale getirmek amacıyla geliştirilmiştir.
+
+---
+
+👨‍💻 **Geliştirici:** meliktecir
