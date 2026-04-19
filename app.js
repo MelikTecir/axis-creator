@@ -30,8 +30,82 @@ async function loadData() {
         console.warn('konular.json yüklenemedi:', e);
         konularData = { "Hata": ["Veriler Yüklenemedi"] };
     }
-    populateDropdown();
+    setCategoryFilter('TYT');
     setCurrentWeek();
+}
+
+let currentCategoryFilter = 'TYT';
+let currentSubjectFilter = '';
+
+function setCategoryFilter(category) {
+    currentCategoryFilter = category;
+    currentSubjectFilter = '';
+    
+    const btnIds = {
+        'TYT': 'btn-tyt',
+        'AYT': 'btn-ayt',
+        'LGS': 'btn-lgs',
+        '7. Sınıf': 'btn-7'
+    };
+    
+    Object.values(btnIds).forEach(id => {
+        const btn = document.getElementById(id);
+        if(btn) {
+            btn.classList.remove('bg-blue-600', 'text-white');
+            btn.classList.add('bg-gray-200', 'text-gray-700');
+        }
+    });
+    
+    const activeBtn = document.getElementById(btnIds[category]);
+    if (activeBtn) {
+        activeBtn.classList.add('bg-blue-600', 'text-white');
+        activeBtn.classList.remove('bg-gray-200', 'text-gray-700');
+    }
+    
+    renderSubjectButtons();
+    populateDropdown(document.getElementById('searchInput').value);
+}
+
+function renderSubjectButtons() {
+    const container = document.getElementById('subTopicContainer');
+    container.innerHTML = "";
+    
+    const matchingSubjects = Object.keys(konularData).filter(ders => ders.startsWith(currentCategoryFilter));
+    
+    if (matchingSubjects.length > 0) {
+        container.classList.remove('hidden');
+        
+        const allBtn = document.createElement('button');
+        allBtn.className = `px-2 py-1 text-[9px] font-bold rounded flex-shrink-0 transition-colors ${currentSubjectFilter === '' ? 'bg-indigo-500 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`;
+        allBtn.textContent = 'TÜMÜ';
+        allBtn.onclick = () => {
+            currentSubjectFilter = '';
+            renderSubjectButtons();
+            populateDropdown(document.getElementById('searchInput').value);
+        };
+        container.appendChild(allBtn);
+        
+        matchingSubjects.forEach(ders => {
+            let cleanName = ders.replace(currentCategoryFilter, '').trim() || ders;
+            
+            const btn = document.createElement('button');
+            const isActive = currentSubjectFilter === ders;
+            btn.className = `px-2 py-1 text-[9px] font-bold rounded flex-shrink-0 transition-colors ${isActive ? 'bg-indigo-500 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`;
+            btn.textContent = cleanName.toUpperCase();
+            btn.onclick = () => {
+                if (currentSubjectFilter === ders) {
+                    currentSubjectFilter = '';
+                } else {
+                    currentSubjectFilter = ders;
+                }
+                renderSubjectButtons();
+                populateDropdown(document.getElementById('searchInput').value);
+            };
+            container.appendChild(btn);
+        });
+    } else {
+        container.classList.add('hidden');
+    }
 }
 
 function populateDropdown(filter = "") {
@@ -42,12 +116,23 @@ function populateDropdown(filter = "") {
 
     const lc = filter.toLowerCase();
     for (const ders in konularData) {
+        if (!ders.startsWith(currentCategoryFilter)) continue;
+        if (currentSubjectFilter && ders !== currentSubjectFilter) continue;
+
+        const cleanDersAdı = ders.replace(currentCategoryFilter, '').trim();
+
         konularData[ders].forEach(konu => {
             const combined = `${ders} - ${konu}`;
             if (!filter || combined.toLowerCase().includes(lc)) {
                 const opt = document.createElement('div');
-                opt.className = 'px-2 py-1.5 cursor-pointer text-gray-700 hover:bg-blue-500 hover:text-white transition-colors truncate text-xs';
-                opt.textContent = combined;
+                opt.className = 'px-2 py-1.5 cursor-pointer text-gray-700 hover:bg-blue-500 hover:text-white transition-colors text-xs flex justify-between items-center group opt-item';
+                
+                if (currentSubjectFilter === '') {
+                   opt.innerHTML = `<span class="truncate">${konu}</span> <span class="text-[9px] opacity-40 group-hover:opacity-100 uppercase ml-2 flex-shrink-0">${cleanDersAdı}</span>`;
+                } else {
+                   opt.innerHTML = `<span class="truncate">${konu}</span>`;
+                }
+                
                 opt.draggable = true;
 
                 if (select.value === combined) {
@@ -57,14 +142,14 @@ function populateDropdown(filter = "") {
 
                 opt.addEventListener('click', () => {
                     select.value = combined;
-                    Array.from(select.children).forEach(child => {
+                    Array.from(select.parentElement.querySelectorAll('.opt-item')).forEach(child => {
                         child.classList.remove('bg-blue-500', 'text-white');
                         child.classList.add('text-gray-700');
                     });
                     opt.classList.add('bg-blue-500', 'text-white');
                     opt.classList.remove('text-gray-700');
                 });
-
+                
                 opt.addEventListener('dblclick', () => {
                     select.value = combined;
                     addItem();
@@ -73,9 +158,9 @@ function populateDropdown(filter = "") {
                 opt.addEventListener('dragstart', (e) => {
                     e.dataTransfer.setData('text/plain', combined);
                     e.dataTransfer.effectAllowed = 'copy';
-
+                    
                     select.value = combined;
-                    Array.from(select.children).forEach(child => {
+                    Array.from(select.parentElement.querySelectorAll('.opt-item')).forEach(child => {
                         child.classList.remove('bg-blue-500', 'text-white');
                         child.classList.add('text-gray-700');
                     });

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Axis Education Manager v2.5.0</title>
+    <title>Axis Education Manager v2.6.2</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -18,7 +18,7 @@
 
     <!-- Sol Panel -->
     <div
-        class="w-full md:w-80 bg-white shadow-2xl p-6 no-print md:sticky md:top-0 md:h-screen overflow-y-auto flex-shrink-0 z-10">
+        class="w-full md:w-96 bg-white shadow-2xl p-6 no-print md:sticky md:top-0 md:h-screen overflow-y-auto flex-shrink-0 z-10">
         <h1 class="text-xl font-black text-gray-800 mb-4 border-b-2 border-gray-100 pb-2 uppercase tracking-tighter">
             Program Ayarları</h1>
 
@@ -45,6 +45,25 @@
 
             <div>
                 <label class="text-xs font-bold text-gray-500 uppercase">Ders/Konu Ara</label>
+
+                <div class="flex gap-1 mb-2 mt-1">
+                    <button id="btn-tyt"
+                        class="flex-1 text-[10px] font-bold py-1.5 rounded-md bg-blue-600 text-white transition-colors"
+                        onclick="setCategoryFilter('TYT')">TYT</button>
+                    <button id="btn-ayt"
+                        class="flex-1 text-[10px] font-bold py-1.5 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors"
+                        onclick="setCategoryFilter('AYT')">AYT</button>
+                    <button id="btn-lgs"
+                        class="flex-1 text-[10px] font-bold py-1.5 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors"
+                        onclick="setCategoryFilter('LGS')">LGS</button>
+                    <button id="btn-7"
+                        class="flex-1 text-[10px] font-bold py-1.5 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors"
+                        onclick="setCategoryFilter('7. Sınıf')">7. SINIF</button>
+                </div>
+
+                <!-- Alt başlıklar (Ders isimleri) için alan -->
+                <div id="subTopicContainer" class="flex flex-wrap gap-1 mb-2 hidden">
+                </div>
 
                 <div class="border-2 border-gray-100 rounded-lg overflow-hidden">
 
