@@ -56,7 +56,9 @@ Axis, öğrencilerin haftalık ders çalışma programlarını hızlı, düzenli
 
 | Sürüm | Durum | Yenilikler & İyileştirmeler | Tarih |
 | :--- | :--- | :--- | :--- |
-| **v2.5.0** | ✅ Güncel | Çift tıklama ile konu ekleme ve sürükle-bırak ders yönetimi eklendi. | 19.04.2026 |
+| **v2.7.1** | ✅ Güncel | Bulut sistemi optimize edildi. | 20.04.2026 |
+| **v2.6.2** | ✅ Tamamlandı | Güvenlik altyapısı güçlendirildi. | 20.04.2026 |
+| **v2.5.0** | ✅ Tamamlandı | Çift tıklama ile konu ekleme ve sürükle-bırak ders yönetimi eklendi. | 19.04.2026 |
 | **v2.4.0** | ✅ Tamamlandı | Konu listeleri detaylandırıldı ve genişletildi. | 19.04.2026 |
 | **v2.3.7** | ✅ Tamamlandı | Güvenlik altyapısı güçlendirildi, veri erişimi optimize edildi. | 19.04.2026 |
 | **v2.2.0** | ✅ Tamamlandı | Bulut yedekleme sistemi eklendi. | 17.04.2026 |
