@@ -10,6 +10,7 @@ let programData = {
     items: [[], [], [], [], [], [], []]
 };
 let konularData = {};
+let sorularData = {};
 
 function generateSecureCode() {
     const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -29,6 +30,14 @@ async function loadData() {
     } catch (e) {
         console.warn('konular.json yüklenemedi:', e);
         konularData = { "Hata": ["Veriler Yüklenemedi"] };
+    }
+    try {
+        const res2 = await fetch('sorular.json');
+        if (!res2.ok) throw new Error(`HTTP ${res2.status}`);
+        sorularData = await res2.json();
+    } catch (e) {
+        console.warn('sorular.json yüklenemedi:', e);
+        sorularData = {};
     }
     setCategoryFilter('TYT');
     setCurrentWeek();
@@ -87,10 +96,14 @@ function renderSubjectButtons() {
         
         matchingSubjects.forEach(ders => {
             let cleanName = ders.replace(currentCategoryFilter, '').trim() || ders;
-            
-            const btn = document.createElement('button');
+
+            // Wrapper: ders filtre butonu + istatistik icon butonu yan yana
+            const wrapper = document.createElement('div');
+            wrapper.className = 'flex items-center flex-shrink-0';
+
             const isActive = currentSubjectFilter === ders;
-            btn.className = `px-2 py-1 text-[9px] font-bold rounded flex-shrink-0 transition-colors ${isActive ? 'bg-indigo-500 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`;
+            const btn = document.createElement('button');
+            btn.className = `px-2 py-1 text-[9px] font-bold rounded-l transition-colors ${isActive ? 'bg-indigo-500 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`;
             btn.textContent = cleanName.toUpperCase();
             btn.onclick = () => {
                 if (currentSubjectFilter === ders) {
@@ -101,7 +114,22 @@ function renderSubjectButtons() {
                 renderSubjectButtons();
                 populateDropdown(document.getElementById('searchInput').value);
             };
-            container.appendChild(btn);
+            wrapper.appendChild(btn);
+
+            // Soru dağılımı butonu (sadece sorularData'da bu ders varsa göster)
+            if (sorularData[ders]) {
+                const statsBtn = document.createElement('button');
+                statsBtn.title = 'Soru Dağılımı';
+                statsBtn.className = `px-1.5 py-1 text-[9px] font-bold rounded-r transition-colors border-l border-white/30 ${isActive ? 'bg-indigo-400 text-white hover:bg-indigo-600' : 'bg-gray-200 text-gray-500 hover:bg-indigo-500 hover:text-white'}`;
+                statsBtn.textContent = '📊';
+                statsBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    showSorularModal(ders);
+                };
+                wrapper.appendChild(statsBtn);
+            }
+
+            container.appendChild(wrapper);
         });
     } else {
         container.classList.add('hidden');
@@ -259,6 +287,158 @@ function addItem() {
     setTimeout(() => {
         isAdding = false;
     }, 300);
+}
+
+// ============================================================
+// Soru Dağılımı Modalı
+// ============================================================
+function showSorularModal(dersKey) {
+    const data = sorularData[dersKey];
+    if (!data) return;
+
+    const existing = document.getElementById('sorular-modal');
+    if (existing) existing.remove();
+
+    const { yillar, konular, toplam } = data;
+    // Ders adını temizle (kategori prefix'ini kaldır)
+    const dersTitle = dersKey;
+
+    const modal = document.createElement('div');
+    modal.id = 'sorular-modal';
+    modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9998;display:flex;align-items:center;justify-content:center;padding:16px;';
+
+    const box = document.createElement('div');
+    box.style.cssText = 'background:#fff;border-radius:14px;padding:0;max-width:90vw;max-height:85vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 12px 48px rgba(0,0,0,0.25);min-width:320px;';
+
+    // Başlık bar
+    const header = document.createElement('div');
+    header.style.cssText = 'padding:16px 20px 12px;border-bottom:1px solid #e5e7eb;display:flex;justify-content:space-between;align-items:flex-start;flex-shrink:0;';
+    const headerLeft = document.createElement('div');
+    const htitle = document.createElement('p');
+    htitle.textContent = dersTitle + ' — Soru Dağılımı';
+    htitle.style.cssText = 'font-weight:800;font-size:13px;text-transform:uppercase;color:#111;letter-spacing:0.04em;margin:0;';
+    const hrange = document.createElement('p');
+    hrange.textContent = yillar[yillar.length - 1] + ' – ' + yillar[0];
+    hrange.style.cssText = 'font-size:11px;color:#6b7280;margin:2px 0 0;';
+    headerLeft.appendChild(htitle);
+    headerLeft.appendChild(hrange);
+    const closeBtn = document.createElement('button');
+    closeBtn.textContent = '✕';
+    closeBtn.style.cssText = 'background:none;border:none;font-size:16px;color:#9ca3af;cursor:pointer;padding:0 0 0 12px;line-height:1;';
+    closeBtn.onclick = () => modal.remove();
+    header.appendChild(headerLeft);
+    header.appendChild(closeBtn);
+    box.appendChild(header);
+
+    // Tablo wrapper (scroll)
+    const tableWrap = document.createElement('div');
+    tableWrap.style.cssText = 'overflow:auto;flex:1;';
+
+    const table = document.createElement('table');
+    table.style.cssText = 'border-collapse:collapse;width:100%;font-size:11px;';
+
+    // Thead
+    const thead = document.createElement('thead');
+    const headRow = document.createElement('tr');
+
+    const thKonu = document.createElement('th');
+    thKonu.textContent = 'Konular';
+    thKonu.style.cssText = 'background:#1e293b;color:#fff;font-weight:700;text-align:left;padding:8px 12px;position:sticky;left:0;z-index:2;min-width:160px;font-size:11px;';
+    headRow.appendChild(thKonu);
+
+    yillar.forEach(y => {
+        const th = document.createElement('th');
+        th.textContent = y;
+        th.style.cssText = 'background:#1e293b;color:#fff;font-weight:700;text-align:center;padding:8px 10px;min-width:44px;font-size:11px;';
+        headRow.appendChild(th);
+    });
+    thead.appendChild(headRow);
+    table.appendChild(thead);
+
+    // Tbody
+    const tbody = document.createElement('tbody');
+    let rowIdx = 0;
+
+    Object.entries(konular).forEach(([konuAdi, sayilar]) => {
+        const tr = document.createElement('tr');
+        const isEven = rowIdx % 2 === 0;
+        tr.style.cssText = `background:${isEven ? '#fff' : '#f8fafc'};`;
+
+        const tdKonu = document.createElement('td');
+        tdKonu.textContent = konuAdi;
+        tdKonu.style.cssText = `padding:7px 12px;font-weight:500;color:#374151;border-bottom:1px solid #f1f5f9;position:sticky;left:0;z-index:1;background:${isEven ? '#fff' : '#f8fafc'};`;
+        tr.appendChild(tdKonu);
+
+        sayilar.forEach(val => {
+            const td = document.createElement('td');
+            const v = val === '-' ? '–' : val;
+            td.textContent = v;
+
+            // Renklendirme
+            let color = '#374151';
+            let fontWeight = '400';
+            if (val === '-' || val === 0) {
+                color = '#d1d5db';
+            } else if (typeof val === 'number' && val >= 10) {
+                color = '#1d4ed8';
+                fontWeight = '700';
+            } else if (typeof val === 'number' && val >= 5) {
+                color = '#2563eb';
+                fontWeight = '600';
+            } else if (typeof val === 'number' && val >= 3) {
+                color = '#3b82f6';
+                fontWeight = '600';
+            }
+            td.style.cssText = `text-align:center;padding:7px 10px;border-bottom:1px solid #f1f5f9;color:${color};font-weight:${fontWeight};`;
+            tr.appendChild(td);
+        });
+
+        tbody.appendChild(tr);
+        rowIdx++;
+    });
+
+    // Toplam satırı
+    if (toplam && toplam.length > 0) {
+        const trTotal = document.createElement('tr');
+        trTotal.style.cssText = 'background:#f1f5f9;border-top:2px solid #e2e8f0;';
+
+        const tdLabel = document.createElement('td');
+        tdLabel.textContent = 'Toplam Soru';
+        tdLabel.style.cssText = 'padding:8px 12px;font-weight:800;color:#1e293b;font-size:11px;position:sticky;left:0;background:#f1f5f9;';
+        trTotal.appendChild(tdLabel);
+
+        toplam.forEach(val => {
+            const td = document.createElement('td');
+            td.textContent = val;
+            td.style.cssText = 'text-align:center;padding:8px 10px;font-weight:800;color:#1e293b;font-size:11px;';
+            trTotal.appendChild(td);
+        });
+        tbody.appendChild(trTotal);
+    }
+
+    table.appendChild(tbody);
+    tableWrap.appendChild(table);
+    box.appendChild(tableWrap);
+
+    // Alt not
+    const footer = document.createElement('div');
+    footer.style.cssText = 'padding:10px 20px;border-top:1px solid #f1f5f9;flex-shrink:0;display:flex;justify-content:space-between;align-items:center;';
+    const footerNote = document.createElement('p');
+    footerNote.textContent = '– = soru çıkmamış';
+    footerNote.style.cssText = 'font-size:10px;color:#9ca3af;margin:0;';
+    const closeFooterBtn = document.createElement('button');
+    closeFooterBtn.textContent = 'Kapat';
+    closeFooterBtn.style.cssText = 'padding:6px 16px;border-radius:8px;background:#f3f4f6;border:none;font-size:11px;font-weight:700;color:#374151;cursor:pointer;';
+    closeFooterBtn.onmouseover = () => closeFooterBtn.style.background = '#e5e7eb';
+    closeFooterBtn.onmouseout = () => closeFooterBtn.style.background = '#f3f4f6';
+    closeFooterBtn.onclick = () => modal.remove();
+    footer.appendChild(footerNote);
+    footer.appendChild(closeFooterBtn);
+    box.appendChild(footer);
+
+    modal.appendChild(box);
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+    document.body.appendChild(modal);
 }
 
 // ============================================================
