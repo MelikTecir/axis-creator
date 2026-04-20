@@ -39,6 +39,16 @@ Axis, öğrencilerin haftalık ders çalışma programlarını hızlı, düzenli
 - Yazdırmaya uygun tasarım.
 - Mobil ve masaüstü uyumlu PDF üretimi.
 
+### 🔁 Ders Çoğaltma Sistemi
+- Eklediğiniz bir dersi tek tıkla çoğaltabilirsiniz.
+- Aynı dersin farklı günlere hızlıca eklenmesini sağlar.
+- Program oluşturma sürecini ciddi ölçüde hızlandırır.
+
+### 📊 Soru Dağılımı Sistemi
+- Ders ve konulara ait çıkmış soru dağılımlarını görüntülemenizi sağlar.
+- Hangi konuların sınavda daha çok çıktığını analiz etmenize yardımcı olur.
+- Çalışma planınızı sınav gerçeklerine göre şekillendirmenizi sağlar.
+
 ---
 
 ## ⚙️ Kullanım Adımları
@@ -56,14 +66,11 @@ Axis, öğrencilerin haftalık ders çalışma programlarını hızlı, düzenli
 
 | Sürüm | Durum | Yenilikler & İyileştirmeler | Tarih |
 | :--- | :--- | :--- | :--- |
-| **v2.7.1** | ✅ Güncel | Bulut sistemi optimize edildi. | 20.04.2026 |
+| **v2.7.1 - v2.7.3** | ✅ Güncel | Ders çoğaltma ve soru dağılımı eklendi. | 20.04.2026 |
 | **v2.6.2** | ✅ Tamamlandı | Güvenlik altyapısı güçlendirildi. | 20.04.2026 |
 | **v2.5.0** | ✅ Tamamlandı | Çift tıklama ile konu ekleme ve sürükle-bırak ders yönetimi eklendi. | 19.04.2026 |
-| **v2.4.0** | ✅ Tamamlandı | Konu listeleri detaylandırıldı ve genişletildi. | 19.04.2026 |
-| **v2.3.7** | ✅ Tamamlandı | Güvenlik altyapısı güçlendirildi, veri erişimi optimize edildi. | 19.04.2026 |
-| **v2.2.0** | ✅ Tamamlandı | Bulut yedekleme sistemi eklendi. | 17.04.2026 |
-| **v2.1.0** | ✅ Tamamlandı | Veri gizliliği ve güvenlik geliştirmeleri yapıldı. | 16.04.2026 |
-| **v2.0.0** | ✅ Tamamlandı | Bulut tabanlı yeni altyapıya geçildi. | 15.04.2026 |
+| **v2.3.7 - v2.4.0** | ✅ Tamamlandı | Konu listeleri genişletildi, veri erişimi optimize edildi ve güvenlik geliştirildi. | 19.04.2026 |
+| **v2.0.0 - v2.2.0** | ✅ Tamamlandı | Bulut altyapısına geçiş, yedekleme ve veri gizliliği geliştirmeleri yapıldı. | 15-17.04.2026 |
 | **v1.4.2** | ✅ Tamamlandı | PDF kayma sorunu giderildi, A4 uyumluluğu sağlandı. | 14.04.2026 |
 | **v1.0.0 - v1.3.0** | ✅ Tamamlandı | Temel program oluşturma, PDF alma, UI geliştirme, filtreleme ve akıllı takvim sistemi eklendi. | - |
 
@@ -78,6 +85,8 @@ Axis, öğrencilerin haftalık ders çalışma programlarını hızlı, düzenli
 - [x] Konu listesi sistemi
 - [x] Bulut yedekleme
 - [x] Güvenlik altyapısı
+- [x] Ders çoğaltma
+- [x] Soru dağılımı
 
 ### ⏳ Geliştirme Aşamasında
 - [ ] İnteraktif çalışma takibi (tamamlanan ders işaretleme)
