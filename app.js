@@ -246,7 +246,6 @@ function addItem() {
     }
 
     programData.items[day].push({ category, topic, note });
-    document.getElementById('noteInput').value = "";
     renderTable();
 
     // Görsel Geri Bildirim (Önceki adımda eklediğimiz animasyon)
@@ -268,6 +267,165 @@ function addItem() {
 function removeItem(dayIndex, itemIndex) {
     programData.items[dayIndex].splice(itemIndex, 1);
     renderTable();
+}
+
+// ============================================================
+// Ders Kopyalama (Çoklu Seçim)
+// ============================================================
+function copyItem(dayIndex, itemIndex) {
+    const item = programData.items[dayIndex][itemIndex];
+    if (!item) return;
+
+    // Mevcut modal varsa kaldır
+    const existing = document.getElementById('copy-modal');
+    if (existing) existing.remove();
+
+    const dayNames = ['Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi', 'Pazar'];
+    const selected = new Set();
+
+    const modal = document.createElement('div');
+    modal.id = 'copy-modal';
+    modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:9998;display:flex;align-items:center;justify-content:center';
+
+    const box = document.createElement('div');
+    box.style.cssText = 'background:#fff;border-radius:14px;padding:24px;min-width:260px;max-width:320px;width:90%;box-shadow:0 8px 32px rgba(0,0,0,0.22);';
+
+    // Başlık + ders adı
+    const title = document.createElement('p');
+    title.textContent = 'Hangi günlere kopyalansın?';
+    title.style.cssText = 'font-weight:800;font-size:13px;text-transform:uppercase;margin-bottom:4px;color:#222;letter-spacing:0.05em;';
+    box.appendChild(title);
+
+    const subtitle = document.createElement('p');
+    subtitle.textContent = (item.topic || item.category) + (item.note ? ` · ${item.note}` : '');
+    subtitle.style.cssText = 'font-size:11px;color:#6b7280;margin-bottom:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;';
+    box.appendChild(subtitle);
+
+    // Tümünü seç / kaldır linki
+    const selectAllRow = document.createElement('div');
+    selectAllRow.style.cssText = 'display:flex;justify-content:flex-end;margin-bottom:8px;';
+    const selectAllBtn = document.createElement('button');
+    selectAllBtn.textContent = 'Tümünü Seç';
+    selectAllBtn.style.cssText = 'background:none;border:none;font-size:10px;font-weight:700;color:#3b82f6;cursor:pointer;padding:0;text-transform:uppercase;letter-spacing:0.04em;';
+    let allSelected = false;
+    selectAllBtn.onclick = () => {
+        allSelected = !allSelected;
+        dayNames.forEach((_, d) => {
+            if (d === dayIndex) return;
+            if (allSelected) selected.add(d); else selected.delete(d);
+        });
+        updateButtons();
+        selectAllBtn.textContent = allSelected ? 'Seçimi Kaldır' : 'Tümünü Seç';
+        updateConfirmBtn();
+    };
+    selectAllRow.appendChild(selectAllBtn);
+    box.appendChild(selectAllRow);
+
+    // Gün butonları grid
+    const grid = document.createElement('div');
+    grid.style.cssText = 'display:grid;grid-template-columns:1fr 1fr;gap:8px;';
+
+    const dayBtns = [];
+
+    // Onayla butonu önceden tanımlanıyor (updateConfirmBtn referans alabilsin)
+    const confirmBtn = document.createElement('button');
+    confirmBtn.style.cssText = 'margin-top:14px;width:100%;padding:10px;border-radius:9px;font-weight:800;font-size:12px;border:none;text-transform:uppercase;letter-spacing:0.05em;transition:background 0.15s;';
+
+    function updateButtons() {
+        dayNames.forEach((name, d) => {
+            const btn = dayBtns[d];
+            if (!btn) return;
+            const isSource = d === dayIndex;
+            const isSel = selected.has(d);
+            if (isSource) {
+                btn.style.background = '#e5e7eb';
+                btn.style.color = '#9ca3af';
+                btn.style.boxShadow = 'none';
+            } else if (isSel) {
+                btn.style.background = '#3b82f6';
+                btn.style.color = '#fff';
+                btn.style.boxShadow = '0 0 0 2px #93c5fd';
+            } else {
+                btn.style.background = '#f3f4f6';
+                btn.style.color = '#374151';
+                btn.style.boxShadow = 'none';
+            }
+        });
+    }
+
+    function updateConfirmBtn() {
+        const count = selected.size;
+        confirmBtn.disabled = count === 0;
+        confirmBtn.textContent = count === 0
+            ? 'Gün Seçin'
+            : count === 1
+                ? `${dayNames[Array.from(selected)[0]]}'a Kopyala`
+                : `${count} Güne Kopyala`;
+        confirmBtn.style.background = count === 0 ? '#d1d5db' : '#3b82f6';
+        confirmBtn.style.color = count === 0 ? '#9ca3af' : '#fff';
+        confirmBtn.style.cursor = count === 0 ? 'not-allowed' : 'pointer';
+    }
+
+    dayNames.forEach((name, d) => {
+        const btn = document.createElement('button');
+        btn.textContent = name;
+        const isSource = d === dayIndex;
+        btn.style.cssText = `padding:9px 6px;border-radius:9px;font-size:12px;font-weight:700;border:none;transition:background 0.12s,box-shadow 0.12s;cursor:${isSource ? 'not-allowed' : 'pointer'};`;
+        btn.disabled = isSource;
+        if (isSource) {
+            btn.title = 'Kaynağın günü';
+            btn.style.background = '#e5e7eb';
+            btn.style.color = '#9ca3af';
+        } else {
+            btn.style.background = '#f3f4f6';
+            btn.style.color = '#374151';
+            btn.onclick = () => {
+                if (selected.has(d)) selected.delete(d); else selected.add(d);
+                const availCount = dayNames.filter((_, x) => x !== dayIndex).length;
+                allSelected = selected.size === availCount;
+                selectAllBtn.textContent = allSelected ? 'Seçimi Kaldır' : 'Tümünü Seç';
+                updateButtons();
+                updateConfirmBtn();
+            };
+        }
+        dayBtns[d] = btn;
+        grid.appendChild(btn);
+    });
+
+    box.appendChild(grid);
+
+    // Onayla butonu onclick + ilk durum
+    updateConfirmBtn();
+    confirmBtn.onclick = () => {
+        if (selected.size === 0) return;
+        const targets = Array.from(selected);
+        targets.forEach(d => programData.items[d].push({ ...item }));
+        renderTable();
+        modal.remove();
+        targets.forEach(d => {
+            const cell = document.getElementById(`day-${d}`);
+            if (cell) {
+                cell.classList.add('added-flash');
+                setTimeout(() => cell.classList.remove('added-flash'), 450);
+            }
+        });
+        const names = targets.map(d => dayNames[d]).join(', ');
+        showNotification(`"${item.topic || item.category}" → ${names} kopyalandı.`, 'success');
+    };
+    box.appendChild(confirmBtn);
+
+    // İptal butonu
+    const cancelBtn = document.createElement('button');
+    cancelBtn.textContent = 'İptal';
+    cancelBtn.style.cssText = 'margin-top:8px;width:100%;padding:8px;border-radius:9px;background:#f9fafb;color:#374151;font-weight:700;font-size:12px;border:none;cursor:pointer;';
+    cancelBtn.onmouseover = () => cancelBtn.style.background = '#e5e7eb';
+    cancelBtn.onmouseout = () => cancelBtn.style.background = '#f9fafb';
+    cancelBtn.onclick = () => modal.remove();
+    box.appendChild(cancelBtn);
+
+    modal.appendChild(box);
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+    document.body.appendChild(modal);
 }
 
 // ============================================================
@@ -308,13 +466,28 @@ function renderTable() {
                 div.appendChild(noteDiv);
             }
 
+            // Buton grubu (sağ üst köşe)
+            const btnGroup = document.createElement('div');
+            btnGroup.className = 'no-print absolute -right-1 -top-1 flex gap-0.5';
+
+            // Kopyala Butonu
+            const copyBtn = document.createElement('button');
+            copyBtn.title = 'Başka güne kopyala';
+            copyBtn.className = 'copy-btn bg-blue-500 text-white w-4 h-4 rounded-full text-[8px] flex items-center justify-center shadow-md cursor-pointer hover:bg-blue-600';
+            copyBtn.textContent = '⎘';
+            copyBtn.dataset.day = i;
+            copyBtn.dataset.idx = idx;
+            btnGroup.appendChild(copyBtn);
+
             // Silme Butonu
             const delBtn = document.createElement('button');
             delBtn.dataset.day = i;
             delBtn.dataset.idx = idx;
-            delBtn.className = "del-btn delete-btn no-print absolute -right-1 -top-1 bg-red-500 text-white w-4 h-4 rounded-full text-[8px] flex items-center justify-center shadow-md cursor-pointer hover:bg-red-600";
+            delBtn.className = "del-btn delete-btn bg-red-500 text-white w-4 h-4 rounded-full text-[8px] flex items-center justify-center shadow-md cursor-pointer hover:bg-red-600";
             delBtn.textContent = "✕";
-            div.appendChild(delBtn);
+            btnGroup.appendChild(delBtn);
+
+            div.appendChild(btnGroup);
 
             div.addEventListener('dragstart', (e) => {
                 e.dataTransfer.setData('application/json', JSON.stringify({ type: 'move_item', day: i, idx: idx }));
@@ -331,13 +504,21 @@ function renderTable() {
     }
 }
 
-// Event Delegation (Silme işlemi için)
+// Event Delegation (Silme ve Kopyalama işlemleri için)
 document.getElementById('preview-container').addEventListener('click', (e) => {
-    const btn = e.target.closest('.del-btn');
-    if (!btn) return;
-    const day = parseInt(btn.dataset.day, 10);
-    const idx = parseInt(btn.dataset.idx, 10);
-    removeItem(day, idx);
+    const delBtn = e.target.closest('.del-btn');
+    if (delBtn) {
+        const day = parseInt(delBtn.dataset.day, 10);
+        const idx = parseInt(delBtn.dataset.idx, 10);
+        removeItem(day, idx);
+        return;
+    }
+    const copyBtn = e.target.closest('.copy-btn');
+    if (copyBtn) {
+        const day = parseInt(copyBtn.dataset.day, 10);
+        const idx = parseInt(copyBtn.dataset.idx, 10);
+        copyItem(day, idx);
+    }
 });
 
 // ============================================================
@@ -667,7 +848,6 @@ for (let i = 0; i < 7; i++) {
         const note = document.getElementById('noteInput').value.trim();
 
         programData.items[i].splice(dropIndex, 0, { category, topic, note });
-        document.getElementById('noteInput').value = "";
 
         renderTable();
 
@@ -695,7 +875,8 @@ async function loadFromCloud() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    //'Authorization': `Bearer ${SUPABASE_KEY}` // anon key yeterli
+                    'apikey': SUPABASE_KEY, // Buraya public key'ini ekliyoruz
+                    'Authorization': `Bearer ${SUPABASE_KEY}` // anon key yeterli
                 },
                 body: JSON.stringify({ code })
             }
