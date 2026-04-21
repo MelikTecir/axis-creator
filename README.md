@@ -1,4 +1,4 @@
-# 🚀 Axis - YKS Planlayıcı Pro
+# 🚀 Axis - Polinom Planlayıcı Pro
 
 Axis, öğrencilerin haftalık ders çalışma programlarını hızlı, düzenli ve profesyonel bir şekilde oluşturmasını sağlayan modern bir web uygulamasıdır. Planlama sürecini basitleştirir, görselleştirir ve PDF çıktısı ile taşınabilir hale getirir.
 
