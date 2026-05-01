@@ -22,7 +22,8 @@
         "Yazım Kuralları",
         "Noktalama İşaretleri",
         "Branş Deneme",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "TYT Matematik": [
         "Mantık",
@@ -53,7 +54,8 @@
         "2. Dereceden Denklemler",
         "Karmaşık Sayılar",
         "Branş Deneme",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "TYT Geometri": [
         "Doğruda Açı",
@@ -85,7 +87,8 @@
         "Koordinat Düzlemi ve Noktanın Analitiği",
         "Doğrunun Analitiği",
         "Branş Deneme",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "TYT Fizik": [
         "Fizik Bilimine Giriş",
@@ -103,7 +106,8 @@
         "Dalgalar",
         "Optik",
         "Branş Deneme",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "TYT Kimya": [
         "Simyadan Kimyaya-Kimya Disiplinleri-Kimyacıların Çalışma Alanları",
@@ -120,7 +124,8 @@
         "Asitler, Bazlar ve Tuzlar",
         "Yaygın Günlük Hayat Kimyasalları Gıdalar (Kimya Her Yerde)",
         "Branş Deneme",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "TYT Biyoloji": [
         "Canlıların Ortak Özellikleri-İnorganik Bileşikler",
@@ -140,7 +145,8 @@
         "Güncel Çevre Sorunları",
         "Biyolojik Çeşitliliğin Korunması",
         "Branş Deneme",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "TYT Tarih": [
         "Tarih ve Zaman",
@@ -164,7 +170,8 @@
         "Millî Mücadele",
         "Atatürkçülük ve Türk İnkılabı",
         "Branş Deneme",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "TYT Coğrafya": [
         "Coğrafya, İnsan ve Doğa",
@@ -189,7 +196,8 @@
         "Bölgeler",
         "Afetler",
         "Branş Deneme",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "TYT Felsefe": [
         "Felsefeyi Tanıma",
@@ -208,7 +216,8 @@
         "18. Yy-19. Yy Felsefesi",
         "20. Yy Felsefesi",
         "Branş Deneme",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "AYT Matematik": [
         "Temel Kavramlar",
@@ -236,7 +245,8 @@
         "Katı Cisimler",
         "Üçgen, Çokgen, Dörtgen, Özel Dörtgenler",
         "Branş Deneme",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "AYT Geometri": [
         "Doğruda Açı",
@@ -272,7 +282,8 @@
         "Dönüşüm Geometrisi, Simetri-Yansıma",
         "Çemberin Analitiği",
         "Branş Deneme",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "AYT Fizik": [
         "Vektör",
@@ -298,7 +309,8 @@
         "Modern Fizik",
         "Modern Fiziğin Uygulamaları",
         "Branş Deneme",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "AYT Kimya": [
         "Atomun Kuantum Modeli - Periyodik Sistem",
@@ -324,7 +336,8 @@
         "Fonksiyonel Gruplar",
         "Fosil Yakıtlar-Enerji Kaynakları- Sürdürülebilirlik-Nanoteknoloji",
         "Branş Deneme",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "AYT Biyoloji": [
         "Sinir Sistemi",
@@ -346,7 +359,8 @@
         "Canlılar ve Çevre Popülasyon Ekolojisi",
         "Nükleik Asitlerin Keşfi ve Önemi",
         "Branş Deneme",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "AYT Edebiyat": [
         "Anlam Bilgisi",
@@ -361,7 +375,8 @@
         "Cumhuriyet Dönemi",
         "Edebi Akımlar",
         "Branş Deneme",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "AYT Tarih": [
         "Tarih ve Zaman",
@@ -392,7 +407,8 @@
         "Toplumsal Devrim Çağında Dünya ve Türkiye",
         "XXI. Yüzyılın Eşiğinde Türkiye ve Dünya",
         "Branş Deneme",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "AYT Coğrafya": [
         "Biyoçeşitlilik ve Ekosistem",
@@ -412,7 +428,8 @@
         "Çevre Sorunları",
         "Doğal Çevrenin Sınırlılığı, Çevresel Örgütler",
         "Branş Deneme",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "AYT Felsefe": [
         "Psikoloji Bilimini Tanıyalım",
@@ -430,7 +447,8 @@
         "Mantık ve Dil",
         "Sembolik Mantık",
         "Branş Deneme",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "LGS Türkçe": [
         "Fiilimsiler",
@@ -443,7 +461,8 @@
         "Paragraf",
         "Noktalama İşaretleri",
         "Anlatım Bozuklukları",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "LGS Matematik": [
         "Çarpanlar ve Katlar",
@@ -458,7 +477,8 @@
         "Eşlik ve Benzerlik",
         "Dönüşüm Geometrisi",
         "Geometrik Cisimler",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "LGS Fen Bilimleri": [
         "Mevsimler ve İklim",
@@ -468,7 +488,8 @@
         "Basit Makineler",
         "Enerji Dönüşümleri ve Çevre Bilimi",
         "Elektrik Yükleri ve Elektrik Enerjisi",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "LGS İnkılap Tarihi": [
         "Bir Kahraman Doğuyor",
@@ -478,7 +499,8 @@
         "Demokratikleşme Çabaları",
         "Atatürk Dönemi Türk Dış Politikası",
         "Atatürk'ün Ölümü ve Sonrası",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "LGS İngilizce": [
         "Friendship",
@@ -491,7 +513,8 @@
         "Chores",
         "Science",
         "Natural Forces",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "LGS Din Kültürü": [
         "Kader İnancı",
@@ -499,7 +522,8 @@
         "Din ve Hayat",
         "Hz. Muhammed'in Örnekliği",
         "Kur'an-ı Kerim ve Özellikleri",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "7. Sınıf Türkçe": [
         "Fiiller",
@@ -514,7 +538,8 @@
         "Yazım Kuralları",
         "Noktalama İşaretleri",
         "Metin Türleri",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "7. Sınıf Matematik": [
         "Tam Sayılarla İşlemler",
@@ -529,7 +554,8 @@
         "Çember ve Daire",
         "Veri Analizi",
         "Cisimlerin Farklı Yönlerden Görünümleri",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "7. Sınıf Fen Bilimleri": [
         "Güneş Sistemi ve Ötesi",
@@ -539,7 +565,8 @@
         "Işığın Madde ile Etkileşimi",
         "Canlılarda Üreme, Büyüme ve Gelişme",
         "Elektrik Devreleri",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "7. Sınıf Sosyal Bilgiler": [
         "Birey ve Toplum",
@@ -549,7 +576,8 @@
         "Üretim, Dağıtım ve Tüketim",
         "Etkin Vatandaşlık",
         "Küresel Bağlantılar",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "7. Sınıf İngilizce": [
         "Appearance and Personality",
@@ -562,7 +590,8 @@
         "Public Buildings",
         "Environment",
         "Planets",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ],
     "7. Sınıf Din Kültürü": [
         "Melek ve Ahiret İnancı",
@@ -570,6 +599,7 @@
         "Ahlaki Davranışlar",
         "Allah’ın Kulu ve Elçisi Hz. Muhammed (s.a.v)",
         "İslam Düşüncesinde Yorumlar",
-        "Genel Tekrar"
+        "Genel Tekrar",
+        "Genel Deneme"
     ]
 }

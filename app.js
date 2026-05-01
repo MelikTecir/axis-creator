@@ -723,6 +723,7 @@ async function saveToCloud() {
         if (error) throw error;
 
         await generatePDF(code);
+        document.getElementById('display-code').innerText = code;
         showNotification('Program Kaydedildi. Kodunuz: ' + code, 'success');
 
         document.getElementById('code-input').value = code;
@@ -741,8 +742,9 @@ async function saveToCloud() {
 // ============================================================
 async function loadFontsToDoc(doc) {
     const urls = {
-        'Roboto-Regular': 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/fonts/Roboto/Roboto-Regular.ttf',
-        'Roboto-Medium': 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/fonts/Roboto/Roboto-Medium.ttf'
+        'Montserrat-Regular': 'Montserrat-Regular.ttf',
+        'Montserrat-Bold': 'Montserrat-Bold.ttf',
+        'Montserrat-Black': 'Montserrat-Black.ttf'
     };
     for (let fontName in urls) {
         try {
@@ -754,7 +756,10 @@ async function loadFontsToDoc(doc) {
                 binary += String.fromCharCode(bytes[i]);
             }
             doc.addFileToVFS(`${fontName}.ttf`, window.btoa(binary));
-            doc.addFont(`${fontName}.ttf`, "Roboto", fontName === 'Roboto-Medium' ? "bold" : "normal");
+            let style = "normal";
+            if (fontName === 'Montserrat-Bold') style = "bold";
+            if (fontName === 'Montserrat-Black') style = "black";
+            doc.addFont(`${fontName}.ttf`, "Montserrat", style);
         } catch (e) {
             console.error("Font yüklenemedi:", e);
         }
@@ -773,13 +778,13 @@ async function generatePDF(code) {
 
     await loadFontsToDoc(doc);
 
-    // Varsayılan font Roboto olsun (Türkçe karakter destekli)
-    doc.setFont("Roboto", "bold");
+    // Varsayılan font Montserrat olsun (Türkçe karakter destekli)
+    doc.setFont("Montserrat", "bold");
 
-    // ── Logo ──────────────────────────────────────────────────
-    const LOGO_H_MM = 16;   // sabit yükseklik (mm)
+    // ── HEADER (kompakt tek blok) ──────────────────────────────
+    const LOGO_H_MM = 12;
     const LOGO_X = 14;
-    const LOGO_Y = 9;
+    const LOGO_Y = 7;
     let logoWidthMM = 0;
 
     try {
@@ -791,66 +796,61 @@ async function generatePDF(code) {
             reader.onerror = reject;
             reader.readAsDataURL(logoBlob);
         });
-
-        // Gerçek boyutu öğren (aspect ratio korunacak)
         const imgEl = await new Promise((resolve, reject) => {
             const img = new Image();
             img.onload = () => resolve(img);
             img.onerror = reject;
             img.src = logoB64;
         });
-
         const ratio = imgEl.naturalWidth / imgEl.naturalHeight;
         logoWidthMM = LOGO_H_MM * ratio;
-
         doc.addImage(logoB64, 'JPEG', LOGO_X, LOGO_Y, logoWidthMM, LOGO_H_MM);
     } catch (e) {
         console.warn('Logo PDF\'e eklenemedi:', e);
     }
 
-    const textX = LOGO_X + logoWidthMM + (logoWidthMM > 0 ? 3 : 0);
+    const titleX = LOGO_X + logoWidthMM + 3;
+    const logoMidY = LOGO_Y + LOGO_H_MM / 2;
+    const logoBottomY = LOGO_Y + LOGO_H_MM;
 
-    // Logo dikey aralığı: LOGO_Y → LOGO_Y + LOGO_H_MM
-    // Başlık metni logo merkezine hizalı
-    const titleY = LOGO_Y + LOGO_H_MM * 0.48; // ~logo ortası
-    const subTextY = LOGO_Y + LOGO_H_MM + 3;    // logonun hemen altı
-
-    // Başlık
-    doc.setFont("Roboto", "bold");
-    doc.setFontSize(20);
+    // SOL: Kurum başlığı
+    doc.setFont("Montserrat", "black");
+    doc.setFontSize(14);
     doc.setTextColor(0, 0, 0);
-    const maxTitleW = 196 - textX - 85; // sağda öğrenci adı için yer bırak
-    const titleLines = doc.splitTextToSize('POLİNOM ÇALIŞMA PROGRAMI', maxTitleW);
-    doc.text(titleLines, textX, titleY);
+    doc.text('POLİNOM EĞİTİM KURUMLARI', titleX, logoMidY - 1);
 
-    // Kod (sol alt başlık)
-    doc.setFont("Roboto", "normal");
-    doc.setFontSize(7);
-    doc.setTextColor(150, 150, 150);
-    doc.text(code, textX, subTextY);
+    // SOL ALT: Kod (başlığın hemen altında, logoMidY + 3)
+    doc.setFont("Montserrat", "bold");
+    doc.setFontSize(8.5);
+    doc.setTextColor(70, 70, 70);
+    doc.text(code, titleX, logoMidY + 3.5);
 
-    // Sağ Üst – Öğrenci Adı (başlıkla aynı Y)
+    // SAĞ: Öğrenci adı (logo üst kenarından başlar, max 62mm genişlik)
     const rawStudentName = programData.studentName || "ÖĞRENCİ ADI";
-    doc.setFont("Roboto", "bold");
-    doc.setFontSize(16);
+    doc.setFont("Montserrat", "black");
+    doc.setFontSize(13);
     doc.setTextColor(0, 0, 0);
-    const nameLines = doc.splitTextToSize(rawStudentName.toLocaleUpperCase('tr-TR'), 80);
-    doc.text(nameLines, 196, titleY, { align: 'right' });
+    const nameLines = doc.splitTextToSize(rawStudentName.toLocaleUpperCase('tr-TR'), 62);
+    const lineH = 4.5;
+    const nameTopY = LOGO_Y + 3.5;
+    nameLines.forEach((line, i) => {
+        doc.text(line, 196, nameTopY + i * lineH, { align: 'right' });
+    });
 
-    // Tarih (alt başlıkla aynı Y, sağda)
+    // SAĞ ALT: Tarih (her zaman logo altında, sabit)
     const dateText = document.getElementById('display-date').innerText;
-    doc.setFont("Roboto", "normal");
-    doc.setFontSize(8);
-    doc.setTextColor(150, 150, 150);
-    doc.text(dateText, 196, subTextY, { align: 'right' });
+    doc.setFont("Montserrat", "bold");
+    doc.setFontSize(8.5);
+    doc.setTextColor(70, 70, 70);
+    doc.text(dateText, 196, logoBottomY + 1.5, { align: 'right' });
 
-    // Ayrım Çizgisi
-    const lineY = subTextY + 4;
-    doc.setDrawColor(220, 220, 220);
-    doc.setLineWidth(0.5);
+    // Ayırıcı çizgi: SADECE logo yüksekliğine bağlı (sabit)
+    const lineY = logoBottomY + 5;
+    doc.setDrawColor(210, 210, 210);
+    doc.setLineWidth(0.4);
     doc.line(14, lineY, 196, lineY);
 
-    const tableStartY = lineY + 4;
+    const tableStartY = lineY + 3;
 
     // Tablo Başlıkları (Gün isimleri + Tarih)
     const days = ['PAZARTESİ', 'SALI', 'ÇARŞAMBA', 'PERŞEMBE', 'CUMA', 'CUMARTESİ', 'PAZAR'];
@@ -900,7 +900,7 @@ async function generatePDF(code) {
         startY: tableStartY,
         theme: 'plain',
         styles: {
-            font: "Roboto",
+            font: "Montserrat",
             overflow: 'linebreak',
             cellWidth: 26,
             cellPadding: { top: 1, bottom: 1, left: 1.5, right: 1.5 }
@@ -976,7 +976,7 @@ async function generatePDF(code) {
     });
 
     // Alt metin (meliktecir)
-    doc.setFont("Roboto", "normal");
+    doc.setFont("Montserrat", "normal");
     doc.setFontSize(8);
     doc.setTextColor(150, 150, 150);
     doc.text('meliktecir', 196, 290, { align: 'right' });
@@ -1121,6 +1121,7 @@ async function loadFromCloud() {
         }
 
         renderTable();
+        document.getElementById('display-code').innerText = code;
         showNotification('Program yüklendi!', 'success');
         codeInput.value = '';
 
