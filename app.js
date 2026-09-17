@@ -983,7 +983,7 @@ async function generatePDF(code) {
     doc.setFont("Montserrat", "normal");
     doc.setFontSize(8);
     doc.setTextColor(150, 150, 150);
-    doc.text('meliktecir', 196, 290, { align: 'right' });
+    doc.text('polinom.endambilisim.com - meliktecir', 196, 290, { align: 'right' });
 
     let safeName = rawStudentName.replace(/[^a-zA-Z0-9çğıöşüÇĞİÖŞÜ]/g, '_').toLowerCase();
     doc.save(safeName + '_program_' + code + '.pdf');
