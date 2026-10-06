@@ -690,5 +690,227 @@
         "Telif ve Patent Süreci",
         "Genel Tekrar",
         "Genel Deneme"
+    ],
+    "MAARİF TYT Türkçe": [
+        "Sözün İnceliği",
+        "Anlam Arayışı",
+        "Anlamın Yapıtaşları",
+        "Dilin Zenginliği",
+        "Sözün Ezgisi",
+        "Kelimelerin Ritmi",
+        "Dünden Bugüne",
+        "Nesillerin Mirası",
+        "Genel Tekrar",
+        "Genel Deneme"
+    ],
+    "MAARİF TYT Matematik": [
+        "Sayılar",
+        "Nicelikler ve Değişimler",
+        "Geometrik Şekiller",
+        "Eşlik ve Benzerlik",
+        "Algoritma ve Bilişim",
+        "İstatistiksel Araştırma Süreci",
+        "Veriden Olasılığa",
+        "Analitik İnceleme",
+        "Genel Tekrar",
+        "Genel Deneme"
+    ],
+    "MAARİF TYT Fizik": [
+        "Fizik Bilimi ve Kariyer Keşfi",
+        "Kuvvet ve Hareket",
+        "Akışkanlar",
+        "Enerji",
+        "Elektrik",
+        "Dalgalar",
+        "Genel Tekrar",
+        "Genel Deneme"
+    ],
+    "MAARİF TYT Kimya": [
+        "Etkileşim",
+        "Çeşitlilik",
+        "Sürdürülebilirlik",
+        "Genel Tekrar",
+        "Genel Deneme"
+    ],
+    "MAARİF TYT Biyoloji": [
+        "Yaşam",
+        "Organizasyon",
+        "Enerji",
+        "Ekoloji",
+        "Genel Tekrar",
+        "Genel Deneme"
+    ],
+    "MAARİF TYT Tarih": [
+        "Geçmişin İnşa Sürecinde Tarih",
+        "Eski Çağ Medeniyetleri",
+        "Orta Çağ Medeniyetleri",
+        "Türkistandan Türkiyeye(1040-1299)",
+        "Beylikten Devlete Osmanlı(1299-1453)",
+        "Cihan Devleti Osmanlı(1453-1683)",
+        "Genel Tekrar",
+        "Genel Deneme"
+    ],
+    "MAARİF TYT Coğrafya": [
+        "Coğrafyanın Doğası",
+        "Mekansal Bilgi Teknolojileri",
+        "Doğal Sistemler ve Süreçler",
+        "Beşeri Sistemler ve Süreçler",
+        "Ekonomik Faaliyetler ve Etkileri",
+        "Afetler ve Sürdürülebilir Çevre",
+        "Bölgeler, Ülkeler ve Küresel Bağlantılar",
+        "Genel Tekrar",
+        "Genel Deneme"
+    ],
+    "MAARİF TYT Felsefe": [
+        "Felsefenin Doğası",
+        "Felsefe, Mantık ve Argümantasyon",
+        "Varlık Felsefesi",
+        "Bilgi Felsefesi",
+        "Ahlak Felsefesi",
+        "Estetik ve Sanat Felsefesi",
+        "Siyaset Felsefesi",
+        "Din Felsefesi",
+        "Bilim Felsefesi",
+        "Genel Tekrar",
+        "Genel Deneme"
+    ],
+    "MAARİF AYT Edebiyat": [
+        "Bir Diyeceğim Var",
+        "Kültür Yolculuğu",
+        "Yaşamın İzinde",
+        "Hayatın Aynası",
+        "Benim Yolculuğum",
+        "Toplumun Ahengi",
+        "Hayatın Dengesi",
+        "Hayalimdeki Yarın",
+        "Genel Tekrar",
+        "Genel Deneme"
+    ],
+    "MAARİF AYT Matematik": [
+        "İstatistiksel Araştırma Süreci",
+        "Geometrik Şekiller",
+        "Nicelik ve Değişimler",
+        "Geometrik Cisimler",
+        "Değişimin Matematiği",
+        "Hazır Veriler Üzerinde Çalışma",
+        "Genel Tekrar",
+        "Genel Deneme"
+    ],
+    "MAARİF AYT Fizik": [
+        "Kuvvet ve Hareket",
+        "Elektrik ve Manyetizma",
+        "Optik",
+        "Enerji",
+        "Dalgalar",
+        "Madde ve Doğası",
+        "Genel Tekrar",
+        "Genel Deneme"
+    ],
+    "MAARİF AYT Kimya": [
+        "Etkileşim",
+        "Çeşitlilik",
+        "Sürdürülebilirlik",
+        "Genel Tekrar",
+        "Genel Deneme"
+    ],
+    "MAARİF AYT Biyoloji": [
+        "Tepki",
+        "Homeostazi",
+        "Üreme",
+        "Gen",
+        "Genel Tekrar",
+        "Genel Deneme"
+    ],
+    "MAARİF AYT Tarih": [
+        "Değişen Dünyada Osmanlı Devleti(1683-1789)",
+        "Dönüşüm Sürecinde Osmanlı(1789-1908)",
+        "Savaşlar Sarmalında Osmanlı(1908-1918)",
+        "Modern Türk Devletinin Doğuşu",
+        "Türk İnkılabı ve Atatürkçülük",
+        "II. Dünya Savaşından Küreselleşme Sürecine Türkiye",
+        "Genel Tekrar",
+        "Genel Deneme"
+    ],
+    "MAARİF AYT Coğrafya": [
+        "Coğrafyanın Doğası",
+        "Mekansal Bilgi Teknolojileri",
+        "Doğal Sistemler ve Süreçler",
+        "Beşeri Sistemler ve Süreçler",
+        "Ekonomik Faaliyetler ve Etkileri",
+        "Afetler ve Sürdürülebilir Çevre",
+        "Bölgeler Ülkeler ve Küresel Bağlantılar",
+        "Genel Tekrar",
+        "Genel Deneme"
+    ],
+    "MAARİF AYT Felsefe": [
+        "Çevre Sorunları ve Felsefe",
+        "Teknoloji ve Hayat",
+        "Akıl ve İnanç",
+        "Edebiyat ve Felsefe",
+        "Hayatın Anlamı",
+        "Hukuk ve Felsefe",
+        "Genel Tekrar",
+        "Genel Deneme"
+    ],
+    "MAARİF LGS Türkçe": [
+        "İletişim ve Sosyal İlişkiler",
+        "Vatan Sevgisi",
+        "Doğa ve İnsan",
+        "Türk Hikaye Geleneği ve Destanları",
+        "Sanat ve Estetik",
+        "Akademik Düşünme Dünyası",
+        "Genel Tekrar",
+        "Genel Deneme"
+    ],
+    "MAARİF LGS Matematik": [
+        "Sayılar ve Nicelikler",
+        "Cebirsel Düşünme ve Değişimler",
+        "Geometrik Şekiller",
+        "Geometrik Nicelikler",
+        "Dönüşüm",
+        "İstatistiksel Araştırma Süreci",
+        "Veriden Olasılığa",
+        "Genel Tekrar",
+        "Genel Deneme"
+    ],
+    "MAARİF LGS Fen Bilimleri": [
+        "Mevsimler ve İklim",
+        "Yaşamı Kolaylaştıran Kuvvet",
+        "Yaşamın Gizemi",
+        "Sesin Dünyası",
+        "Periyodik Tablo ve Maddenin Etkileşimi",
+        "Elektriğin Yolculuğu",
+        "Sürdürülebilir Yaşam ve Madde Döngüleri",
+        "Genel Tekrar",
+        "Genel Deneme"
+    ],
+    "MAARİF LGS İnkılap Tarihi": [
+        "Mustafa Kemalin Hayatı",
+        "Birinci Dünya Savaşı",
+        "Milli Mücadele",
+        "Türkiye Cumhuriyetinin Kuruluşu ve İnkılaplar",
+        "Genel Tekrar",
+        "Genel Deneme"
+    ],
+    "MAARİF LGS İngilizce": [
+        "School Life & Education",
+        "Classroom Life &Learning",
+        "Personal Life & Well-Being",
+        "Family Life & Home",
+        "Life In The Neighbourhood & City & Social Life",
+        "Life In The World And Culture",
+        "Life In Nature & Global Problems",
+        "Life In The Universe & Future",
+        "Genel Tekrar",
+        "Genel Deneme"
+    ],
+    "MAARİF LGS Din Kültürü": [
+        "Kader İnancı",
+        "Zekat ve Sadaka",
+        "Din ve Sosyal Hayat",
+        "Kuran ve İnsan",
+        "Müslümanların Bilim ve Kültüre Katkısı",
+        "Genel Tekrar",
+        "Genel Deneme"
     ]
 }

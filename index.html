@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Axis Education Manager v2.7.4</title>
+    <title>Endam Bilişim Program Oluşturucu v2.7.8</title>
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,13 +39,13 @@
                 Program Ayarları
             </h1>
 
-            <a href="https://github.com/MelikTecir/axis-creator" target="_blank"
-                class="text-gray-400 hover:text-black transition-colors duration-200">
-                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                    <path
-                        d="M12 .297c-6.63 0-12 5.373-12 12 0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.117 3.176.77.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                </svg>
-            </a>
+            <a href="https://endambilisim.com" target="_blank" title="Endam Bilişim"
+    class="text-gray-400 hover:text-[#0058ee] transition-colors duration-200">
+    <!-- Web / Dünya İkonu (Endam Bilişim'i temsil etmesi için) -->
+    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+    </svg>
+</a>
         </div>
 
         <div class="space-y-2">
@@ -88,6 +88,15 @@
                     <button id="btn-6"
                         class="flex-1 text-[10px] font-bold py-1.5 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors"
                         onclick="setCategoryFilter('6. Sınıf')">6. SINIF</button>
+                    <button id="btn-maarif-tyt"
+                        class="flex-1 text-[10px] font-bold py-1.5 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors"
+                        onclick="setCategoryFilter('MAARİF TYT')">MAARİF TYT</button>
+                    <button id="btn-maarif-ayt"
+                        class="flex-1 text-[10px] font-bold py-1.5 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors"
+                        onclick="setCategoryFilter('MAARİF AYT')">MAARİF AYT</button>
+                    <button id="btn-maarif-lgs"
+                        class="flex-1 text-[10px] font-bold py-1.5 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300 transition-colors"
+                        onclick="setCategoryFilter('MAARİF LGS')">MAARİF LGS</button>
                 </div>
 
                 <!-- Alt başlıklar (Ders isimleri) için alan -->
@@ -137,7 +146,7 @@
                 </div>
 
 
-                <p class="text-[10px] text-gray-400 mt-2 italic text-center">meliktecir</p>
+                <p class="text-[10px] text-gray-400 mt-2 italic text-center">endambilisim.com - meliktecir</p>
             </div>
         </div>
     </div>
@@ -150,12 +159,12 @@
             <!-- Başlık -->
             <div class="flex justify-between items-center border-b-2 border-black pb-4 mb-6">
                 <div class="flex items-center gap-3">
-                    <img src="polinom-logo.jpg" alt="Polinom Logo" style="height:56px;width:auto;object-fit:contain;">
+                    <img src="logo.jpg" alt="Logo" style="height:56px;width:auto;object-fit:contain;">
                     <div>
-                        <h2 class="text-xl font-black text-gray-900 italic tracking-tighter font-montserrat">POLİNOM
-                            EĞİTİM KURUMLARI
+                        <h2 class="text-xl font-black text-gray-900 italic tracking-tighter font-montserrat">ENDAM BİLİŞİM
+                            PROGRAM OLUŞTURUCU
                         </h2>
-                        <p class="text-[9px] text-gray-500 mt-1 uppercase tracking-widest font-bold">Polinom Konsept
+                        <p class="text-[9px] text-gray-500 mt-1 uppercase tracking-widest font-bold">Konsept
                             Planlayıcı</p>
                         <p id="display-code" class="text-[10px] text-gray-800 font-bold uppercase tracking-widest mt-1">
                         </p>
@@ -204,9 +213,81 @@
                 </tbody>
             </table>
 
-            <div class="absolute bottom-4 right-8 text-[9px] text-gray-300 italic">meliktecir</div>
+            <div class="absolute bottom-4 right-8 text-[9px] text-gray-300 italic">endambilisim.com - meliktecir</div>
         </div>
     </div>
+   <!-- SİSTEM BİLDİRİMİ POPUP BAŞLANGICI -->
+    <div id="vbox-freeze-popup" class="fixed inset-0 bg-gray-600/60 backdrop-blur-[2px] z-[9999] flex items-center justify-center">
+    <!-- Klasik Sistem Uyarı Penceresi -->
+    <div class="bg-[#ece9d8] w-[480px] shadow-[2px_2px_15px_rgba(0,0,0,0.6)] rounded-t-md overflow-hidden flex flex-col border border-gray-400 select-none">
+        
+        <!-- Başlık Çubuğu -->
+        <div class="bg-gradient-to-r from-[#0058ee] to-[#3593ff] text-white px-3 py-1.5 flex justify-between items-center cursor-default">
+            <div class="flex items-center gap-2">
+                <!-- Info İkonu -->
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                    <path d="M11 15h2v2h-2zm0-8h2v6zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+                </svg>
+                <span class="font-bold text-[13px] tracking-wide" style="font-family: 'Tahoma', 'Segoe UI', sans-serif;">Sistem Bildirimi - Güncelleme</span>
+            </div>
+            <button onclick="closeVboxPopup()" class="bg-[#e81123] hover:bg-[#f1707a] text-white rounded-sm w-7 h-6 flex items-center justify-center focus:outline-none transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- İçerik Alanı -->
+        <div class="p-6 bg-[#f5f5f5] flex-1 flex flex-col gap-4">
+            <div class="flex gap-5 items-start">
+                <!-- Uyarı İkonu (Sarı Ünlem) -->
+                <div class="w-12 h-12 flex-shrink-0 bg-yellow-400 rounded-full flex items-center justify-center border-[3px] border-white shadow-sm mt-1">
+                    <span class="text-white font-black text-3xl leading-none font-serif">!</span>
+                </div>
+                
+                <div style="font-family: 'Tahoma', 'Segoe UI', sans-serif;" class="text-[13px] text-gray-800 leading-relaxed pt-1 w-full">
+                    <p class="font-bold text-[15px] mb-2 text-black">Yeni Sisteme Geçiş Yapıldı</p>
+                    <p class="mb-3">Altyapımız tamamen yenilenerek daha gelişmiş bir sunucuya taşındı. Kesintisiz hizmet ve yeni özellikler için artık yeni adresi kullanmanız gerekmektedir.</p>
+                    
+                    <!-- Link Alanı -->
+                    <div class="p-3 bg-white border border-gray-300 rounded text-[13px] text-gray-700 shadow-inner flex items-center gap-2 mb-3">
+                        <span class="font-bold text-gray-500">Yeni Adres:</span> 
+                        <a href="https://endambilisim.com" class="text-blue-600 hover:text-blue-800 hover:underline font-bold transition-colors">
+                            endambilisim.com
+                        </a>
+                    </div>
+
+                    <!-- WhatsApp İletişim Alanı -->
+                    <div class="border-t border-gray-300 pt-3 mt-1">
+                        <p class="text-[12px] text-gray-600 mb-2">Detaylı bilgi ve destek için bize ulaşın:</p>
+                        <a href="https://wa.me/905078492846?text=Merhaba,%20sistem%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#128C7E] text-white px-4 py-2 rounded shadow-sm transition-colors w-full text-[13px] font-bold">
+                            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"></path>
+                            </svg>
+                            +90 507 849 28 46 - WhatsApp'tan Bilgi Al
+                        </a>
+                    </div>
+                    
+                    <p class="mt-4 text-[11px] text-gray-500 italic">Eski sistem kısa bir süreliğine daha erişilebilir kalacaktır. Dilerseniz kapatıp kullanmaya devam edebilirsiniz.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function closeVboxPopup() {
+            const popup = document.getElementById('vbox-freeze-popup');
+            if (popup) {
+                // Hafif bir fade-out efekti
+                popup.style.transition = "opacity 0.3s ease";
+                popup.style.opacity = "0";
+                setTimeout(() => {
+                    popup.style.display = 'none';
+                }, 300);
+            }
+        }
+    </script>
+    <!-- SİSTEM BİLDİRİMİ POPUP BİTİŞİ -->
 
     <script src="env.js"></script>
     <script src="app.js"></script>

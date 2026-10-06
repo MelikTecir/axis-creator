@@ -55,7 +55,10 @@ function setCategoryFilter(category) {
         'AYT': 'btn-ayt',
         'LGS': 'btn-lgs',
         '7. Sınıf': 'btn-7',
-        '6. Sınıf': 'btn-6'
+        '6. Sınıf': 'btn-6',
+        'MAARİF TYT': 'btn-maarif-tyt',
+        'MAARİF AYT': 'btn-maarif-ayt',
+        'MAARİF LGS': 'btn-maarif-lgs'
     };
 
     Object.values(btnIds).forEach(id => {
@@ -789,7 +792,7 @@ async function generatePDF(code) {
     let logoWidthMM = 0;
 
     try {
-        const logoRes = await fetch('polinom-logo.jpg');
+        const logoRes = await fetch('logo.jpg');
         const logoBlob = await logoRes.blob();
         const logoB64 = await new Promise((resolve, reject) => {
             const reader = new FileReader();
@@ -980,7 +983,7 @@ async function generatePDF(code) {
     doc.setFont("Montserrat", "normal");
     doc.setFontSize(8);
     doc.setTextColor(150, 150, 150);
-    doc.text('meliktecir', 196, 290, { align: 'right' });
+    doc.text('endambilisim.com - meliktecir', 196, 290, { align: 'right' });
 
     let safeName = rawStudentName.replace(/[^a-zA-Z0-9çğıöşüÇĞİÖŞÜ]/g, '_').toLowerCase();
     doc.save(safeName + '_program_' + code + '.pdf');

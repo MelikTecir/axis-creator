@@ -1,6 +1,6 @@
-# 🚀 Axis - YKS Planlayıcı Pro
+# 🚀 EndamBilişim - Planlayıcı Pro
 
-Axis, öğrencilerin haftalık ders çalışma programlarını hızlı, düzenli ve profesyonel bir şekilde oluşturmasını sağlayan modern bir web uygulamasıdır. Planlama sürecini basitleştirir, görselleştirir ve PDF çıktısı ile taşınabilir hale getirir.
+EndamBilişim, öğrencilerin haftalık ders çalışma programlarını hızlı, düzenli ve profesyonel bir şekilde oluşturmasını sağlayan modern bir web uygulamasıdır. Planlama sürecini basitleştirir, görselleştirir ve PDF çıktısı ile taşınabilir hale getirir.
 
 ---
 
@@ -98,7 +98,7 @@ Axis, öğrencilerin haftalık ders çalışma programlarını hızlı, düzenli
 
 ## 📌 Not
 
-> Axis, öğrencilerin sınav sürecini daha planlı, ölçülebilir ve verimli hale getirmek amacıyla geliştirilmiştir.
+> EndamBilişim, öğrencilerin sınav sürecini daha planlı, ölçülebilir ve verimli hale getirmek amacıyla geliştirilmiştir.
 
 ---
 
